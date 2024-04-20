@@ -7,12 +7,16 @@ on:
 jobs:
     main:
         runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pull-requests: write
+            repository-projects: write
         steps:
             - name: Check if PRs are dirty
               uses: eps1lon/actions-label-merge-conflict@v3
               with:
-                  dirtyLabel: 'conflicts'
-                  removeOnDirtyLabel: 'conflicts'
+                  dirtyLabel: 'pr: needs rebase'
+                  removeOnDirtyLabel: 'pr: ready to ship'
                   repoToken: '${{ secrets.GITHUB_TOKEN }}'
                   commentOnDirty: '⚠️ This Pull Request has conflicts that need to be resolved before merging. 🚨'
                   commentOnClean: '✅ This Pull Request has no conflicts. 🎉'
