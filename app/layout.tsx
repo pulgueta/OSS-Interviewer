@@ -7,8 +7,9 @@ import { GeistMono } from 'geist/font/mono';
 
 import { ViewTransitions } from 'next-view-transitions';
 
-import { Navbar } from '@/components/navbar/navbar';
 import { ClientProviders } from '@/providers';
+import { Navbar } from '@/components/navbar/navbar';
+import { Footer } from '@/components/footer/footer';
 import { og } from '@/i18n/en.json';
 
 import './globals.css';
@@ -87,6 +88,7 @@ const RootLayout: FC<$RootLayout> = ({ children }) => {
 					<ClientProviders>
 						<Navbar />
 						{children}
+						<Footer />
 					</ClientProviders>
 				</body>
 			</html>
