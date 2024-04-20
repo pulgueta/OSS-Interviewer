@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 			url: og.author.url,
 		},
 	],
+	creator: og.author.name,
 	category: og.category,
 	twitter: {
 		creator: og.twitter.creator,
@@ -33,6 +34,20 @@ export const metadata: Metadata = {
 		type: 'website',
 		siteName: og.short_title,
 	},
+	robots: {
+		index: true,
+		follow: true,
+		nocache: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			notranslate: true,
+		},
+	},
+	alternates: {
+		canonical: '/',
+	},
+	metadataBase: new URL('https://oss-interviewer.vercel.app/'),
 };
 
 export const viewport: Viewport = {
