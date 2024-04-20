@@ -22,6 +22,7 @@
 	},
 	"navbar": {
 		"title": "AInterviewer",
+		"buttonLabel": "Open menu",
 		"links": {
 			"pricing": {
 				"label": "Pricing",

@@ -19,49 +19,51 @@ export const MobileMenu = () => {
 					size='icon'
 					className='flex md:hidden'
 				>
-					<MenuIcon aria-label='Open menu' />
+					<MenuIcon aria-label={navbar.buttonLabel} />
 				</Button>
 			</SheetTrigger>
 			<SheetContent>
 				<ul className='grid gap-4 py-4'>
 					<li>
 						<SheetClose asChild>
-							<Link href='/pricing' className='font-medium'>
-								{navbar.links.pricing}
+							<Link
+								href={navbar.links.pricing.href}
+								className='font-medium'
+							>
+								{navbar.links.pricing.label}
 							</Link>
 						</SheetClose>
 					</li>
 					<li>
 						<SheetClose asChild>
-							<Link href='/docs' className='font-medium'>
-								{navbar.links.documentation}
+							<Link
+								href={navbar.links.about.href}
+								className='font-medium'
+							>
+								{navbar.links.about.label}
 							</Link>
 						</SheetClose>
 					</li>
 					<li>
 						<SheetClose asChild>
-							<Link href='/about' className='font-medium'>
-								{navbar.links.about}
-							</Link>
-						</SheetClose>
-					</li>
-					<li>
-						<SheetClose asChild>
-							<Link href='/faq' className='font-medium'>
-								{navbar.links.faq}
+							<Link
+								href={navbar.links.faq.href}
+								className='font-medium'
+							>
+								{navbar.links.faq.label}
 							</Link>
 						</SheetClose>
 					</li>
 				</ul>
 
 				<Link
-					href='/register'
+					href={navbar.links.get_started.href}
 					className={buttonVariants({
 						variant: 'color',
 						className: 'w-full',
 					})}
 				>
-					{navbar.links.get_started}
+					{navbar.links.get_started.label}
 				</Link>
 			</SheetContent>
 		</Sheet>
