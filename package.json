@@ -17,6 +17,7 @@
     "@radix-ui/react-dialog": "latest",
     "@radix-ui/react-dropdown-menu": "latest",
     "@radix-ui/react-navigation-menu": "latest",
+    "@radix-ui/react-separator": "latest",
     "@radix-ui/react-slot": "latest",
     "@vercel/analytics": "latest",
     "class-variance-authority": "latest",
