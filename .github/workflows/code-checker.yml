@@ -1,0 +1,31 @@
+name: Code checker
+
+on:
+    workflow_call:
+        secrets:
+            GH_TOKEN:
+                required: false
+
+env:
+    GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+jobs:
+    code-checker:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: read
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Bun LTS
+              uses: oven-sh/setup-bun@v1
+              with:
+                  bun-version: latest
+
+            - name: 'Install dependencies'
+              run: bun install
+
+            - name: Running linter
+              run: bun run prettier
+              id: lint
