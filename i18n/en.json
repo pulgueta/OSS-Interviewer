@@ -1,0 +1,51 @@
+{
+	"og": {
+		"title": "AI Interviewer - Prepare for interviews with an AI-powered HR-like professional",
+		"short_title": "AI Interviewer",
+		"description": "Get an interview from an AI-powered and unbiased HR-like professional! Prepare for interviews or use it in your business.",
+		"author": {
+			"name": "Andrés Rodríguez",
+			"url": "https://github.com/pulgueta"
+		},
+		"category": "Human Resources and AI",
+		"twitter": {
+			"title": "AI Interviewer - Prepare for interviews with an AI-powered HR-like professional",
+			"description": "Get an interview from an AI-powered and unbiased HR-like professional! Prepare for interviews or use it in your business.",
+			"creator": "@pulgueta"
+		}
+	},
+	"theme": {
+		"light": "Light",
+		"dark": "Dark",
+		"system": "System",
+		"toggle": "Toggle theme"
+	},
+	"navbar": {
+		"title": "AInterviewer",
+		"links": {
+			"pricing": "Pricing",
+			"about": "About",
+			"documentation": "Documentation",
+			"faq": "FAQ",
+			"get_started": "Get started"
+		},
+		"pricing": {
+			"personal": {
+				"title": "Personal",
+				"description": "Prepare for your next interview."
+			},
+			"enterprise": {
+				"title": "Enterprise",
+				"description": "Use it in your business."
+			}
+		}
+	},
+	"landing": {
+		"hero": {
+			"title": "Get interviewed by an HR-like AI-powered professional in minutes!",
+			"description": "Improve your interview skills and get feedback on your answers or use it in your own company to interview candidates",
+			"cta": "Create an account",
+			"contact": "Contact Sales"
+		}
+	}
+}
