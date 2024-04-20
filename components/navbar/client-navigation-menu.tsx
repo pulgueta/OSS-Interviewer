@@ -19,18 +19,18 @@ export const ClientNavigationMenu = () => {
 			<NavigationMenuList>
 				<NavigationMenuItem>
 					<NavigationMenuTrigger className='text-base'>
-						{navbar.links.pricing}
+						{navbar.links.pricing.label}
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul className='grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
 							<ListItem
-								href='/pricing?pr=personal'
+								href={`${navbar.links.pricing.href}?pr=personal`}
 								title='Personal'
 							>
 								{navbar.pricing.personal.description}
 							</ListItem>
 							<ListItem
-								href='/pricing?pr=enterprise'
+								href={`${navbar.links.pricing.href}?pr=enterprise`}
 								title='Enterprise'
 							>
 								{navbar.pricing.enterprise.description}
