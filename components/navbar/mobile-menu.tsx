@@ -18,9 +18,8 @@ export const MobileMenu = () => {
 					variant='outline'
 					size='icon'
 					className='flex md:hidden'
-					aria-label='Open menu'
 				>
-					<MenuIcon />
+					<MenuIcon aria-label='Open menu' />
 				</Button>
 			</SheetTrigger>
 			<SheetContent>
