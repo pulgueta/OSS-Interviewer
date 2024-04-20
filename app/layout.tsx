@@ -1,6 +1,7 @@
 import type { FC, PropsWithChildren } from 'react';
 
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/react';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 
@@ -82,6 +83,7 @@ const RootLayout: FC<$RootLayout> = ({ children }) => {
 				suppressHydrationWarning
 			>
 				<body>
+					{process.env.NODE_ENV === 'production' && <Analytics />}
 					<ClientProviders>
 						<Navbar />
 						{children}
