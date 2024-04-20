@@ -1,4 +1,4 @@
-import type { FC, PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/react';
@@ -73,9 +73,7 @@ export const viewport: Viewport = {
 	width: 'device-width',
 };
 
-type $RootLayout = Readonly<PropsWithChildren>;
-
-const RootLayout: FC<$RootLayout> = ({ children }) => {
+const RootLayout = ({ children }: PropsWithChildren) => {
 	return (
 		<ViewTransitions>
 			<html
