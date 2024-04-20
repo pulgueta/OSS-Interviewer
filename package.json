@@ -13,12 +13,25 @@
 		"prettier": "eslint --fix && prettier --check . --write"
 	},
 	"dependencies": {
+		"@radix-ui/react-accordion": "latest",
+		"@radix-ui/react-dialog": "latest",
+		"@radix-ui/react-dropdown-menu": "latest",
+		"@radix-ui/react-navigation-menu": "latest",
+		"@radix-ui/react-slot": "latest",
+		"class-variance-authority": "latest",
+		"clsx": "latest",
+		"geist": "latest",
+		"lucide-react": "latest",
 		"next": "latest",
+		"next-themes": "latest",
+		"next-view-transitions": "latest",
 		"react": "latest",
-		"react-dom": "latest"
+		"react-dom": "latest",
+		"tailwind-merge": "latest",
+		"tailwindcss-animate": "latest"
 	},
 	"devDependencies": {
-		"@commitlint/config-conventional": "^19.2.2",
+		"@commitlint/config-conventional": "latest",
 		"@commitlint/format": "latest",
 		"@types/node": "latest",
 		"@types/react": "latest",
@@ -35,6 +48,7 @@
 		"prettier": "latest",
 		"prettier-plugin-tailwindcss": "latest",
 		"tailwindcss": "latest",
+		"tailwindcss-animated": "latest",
 		"typescript": "latest"
 	}
 }
