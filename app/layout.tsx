@@ -4,6 +4,8 @@ import type { Metadata, Viewport } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 
+import { ViewTransitions } from 'next-view-transitions';
+
 import { Navbar } from '@/components/navbar/navbar';
 import { ClientProviders } from '@/providers';
 import { og } from '@/i18n/en.json';
@@ -58,18 +60,20 @@ type $RootLayout = Readonly<PropsWithChildren>;
 
 const RootLayout: FC<$RootLayout> = ({ children }) => {
 	return (
-		<html
-			lang='en'
-			className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
-			suppressHydrationWarning
-		>
-			<body>
-				<ClientProviders>
-					<Navbar />
-					{children}
-				</ClientProviders>
-			</body>
-		</html>
+		<ViewTransitions>
+			<html
+				lang='en'
+				className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
+				suppressHydrationWarning
+			>
+				<body>
+					<ClientProviders>
+						<Navbar />
+						{children}
+					</ClientProviders>
+				</body>
+			</html>
+		</ViewTransitions>
 	);
 };
 
