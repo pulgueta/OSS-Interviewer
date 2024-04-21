@@ -1,7 +1,7 @@
 import { Link } from 'next-view-transitions';
 
 import { Separator } from '../ui/separator';
-import { X } from '../svg/x';
+import { Twitter } from '../svg/twitter';
 import { LinkedIn } from '../svg/linkedin';
 import { Github } from '../svg/github';
 import { og, navbar } from '@/i18n/en.json';
@@ -59,7 +59,7 @@ export const Footer = () => {
 						rel='noopener noreferrer'
 						target='_blank'
 					>
-						<X />
+						<Twitter />
 					</a>
 					<a
 						href='https://linkedin.com/in/and-rodr'
