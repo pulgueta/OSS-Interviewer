@@ -16,35 +16,36 @@ export const Navbar = () => {
 			</Link>
 
 			<nav className='flex items-center gap-x-4 md:gap-x-8'>
-				<ul className='hidden md:flex md:items-center md:gap-x-4'>
+				<ul className='hidden md:flex md:items-center md:gap-x-6'>
 					<li>
 						<ClientNavigationMenu />
 					</li>
 					<li>
-						<Link href='/docs' className='font-medium'>
-							{navbar.links.documentation}
+						<Link
+							href={navbar.links.about.href}
+							className='font-medium'
+						>
+							{navbar.links.about.label}
 						</Link>
 					</li>
 					<li>
-						<Link href='/about' className='font-medium'>
-							{navbar.links.about}
-						</Link>
-					</li>
-					<li>
-						<Link href='/faq' className='font-medium'>
-							{navbar.links.faq}
+						<Link
+							href={navbar.links.faq.href}
+							className='font-medium'
+						>
+							{navbar.links.faq.label}
 						</Link>
 					</li>
 				</ul>
 
 				<Link
-					href='/register'
+					href={navbar.links.get_started.href}
 					className={buttonVariants({
 						variant: 'color',
 						className: 'hidden md:block',
 					})}
 				>
-					{navbar.links.get_started}
+					{navbar.links.get_started.label}
 				</Link>
 
 				<MobileMenu />

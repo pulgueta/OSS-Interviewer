@@ -2,7 +2,7 @@
 	"og": {
 		"title": "AI Interviewer - Prepare for interviews with an AI-powered HR-like professional",
 		"short_title": "AI Interviewer",
-		"description": "Get an interview from an AI-powered and unbiased HR-like professional! Prepare for interviews or use it in your business.",
+		"description": "Get or create interviews from an AI-powered and unbiased HR-like professional! Prepare for interviews or use it in your business.",
 		"author": {
 			"name": "Andrés Rodríguez",
 			"url": "https://github.com/pulgueta"
@@ -10,7 +10,7 @@
 		"category": "Human Resources and AI",
 		"twitter": {
 			"title": "AI Interviewer - Prepare for interviews with an AI-powered HR-like professional",
-			"description": "Get an interview from an AI-powered and unbiased HR-like professional! Prepare for interviews or use it in your business.",
+			"description": "Get or create interviews from an AI-powered and unbiased HR-like professional! Prepare for interviews or use it in your business.",
 			"creator": "@pulgueta"
 		}
 	},
@@ -22,12 +22,24 @@
 	},
 	"navbar": {
 		"title": "AInterviewer",
+		"buttonLabel": "Open menu",
 		"links": {
-			"pricing": "Pricing",
-			"about": "About",
-			"documentation": "Documentation",
-			"faq": "FAQ",
-			"get_started": "Get started"
+			"pricing": {
+				"label": "Pricing",
+				"href": "/pricing"
+			},
+			"about": {
+				"label": "About",
+				"href": "/about"
+			},
+			"faq": {
+				"label": "FAQ",
+				"href": "/faq"
+			},
+			"get_started": {
+				"label": "Get started",
+				"href": "/register"
+			}
 		},
 		"pricing": {
 			"personal": {
@@ -42,10 +54,24 @@
 	},
 	"landing": {
 		"hero": {
-			"title": "Get interviewed by an HR-like AI-powered professional in minutes!",
+			"title": "Get or create interviews by an HR-like AI-powered professional in minutes!",
 			"description": "Improve your interview skills and get feedback on your answers or use it in your own company to interview candidates",
 			"cta": "Create an account",
 			"contact": "Contact Sales"
+		},
+		"second": {
+			"badges": {
+				"hiring": "Hiring people?",
+				"practicing": "Practicing for an interview?"
+			},
+			"personal": {
+				"title": "Don't lose any opportunities to get your dream job.",
+				"description": "With AInterviewer, you can practice your skills and get feedback on your performance just like in a real interview. Provide some information about yourself, choose the job you want to practice for, and start the interview."
+			},
+			"enterprise": {
+				"title": "Don't waste time with stressful interviews and processes.",
+				"description": "With AInterviewer, you can create an interview based on the job and candidate's profile, choose the questions you want to ask and the time to answer each one. After the interview, you can review the candidate's performance, give feedback and move on with the hiring process."
+			}
 		}
 	}
 }
