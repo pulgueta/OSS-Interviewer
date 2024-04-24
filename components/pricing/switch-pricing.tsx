@@ -28,7 +28,7 @@ export const SwitchPricing: FC<CheckedSwitch> = ({ type = undefined }) => {
 				<Label htmlFor='pricing-mode'>Enterprise</Label>
 			</div>
 
-			<div className='flex w-full flex-col items-center justify-center gap-4 md:flex-row md:flex-wrap md:gap-8 lg:gap-16'>
+			<div className='flex w-full flex-col items-start justify-center gap-4 md:flex-row md:flex-wrap md:gap-8 lg:gap-16'>
 				{!personal
 					? pricingData.map(
 							(plan) =>
