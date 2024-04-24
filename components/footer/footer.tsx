@@ -58,22 +58,25 @@ export const Footer = () => {
 						href='https://twitter.com/pulgueta_'
 						rel='noopener noreferrer'
 						target='_blank'
+						aria-label='Twitter profile'
 					>
-						<Twitter />
+						<Twitter name='Twitter' />
 					</a>
 					<a
 						href='https://linkedin.com/in/and-rodr'
 						rel='noopener noreferrer'
 						target='_blank'
+						aria-label='LinkedIn profile'
 					>
-						<LinkedIn />
+						<LinkedIn name='LinkedIn' />
 					</a>
 					<a
 						href='https://github.com/pulgueta'
 						rel='noopener noreferrer'
 						target='_blank'
+						aria-label='GitHub profile'
 					>
-						<Github />
+						<Github name='GitHub' />
 					</a>
 				</div>
 			</div>

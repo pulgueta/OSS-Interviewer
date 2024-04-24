@@ -22,6 +22,7 @@ export const SwitchPricing: FC<CheckedSwitch> = ({ type = undefined }) => {
 				<Label htmlFor='pricing-mode'>Personal</Label>
 				<Switch
 					id='pricing-mode'
+					aria-label='Switch pricing mode'
 					checked={personal}
 					onCheckedChange={() => setPersonal((prev) => !prev)}
 				/>
