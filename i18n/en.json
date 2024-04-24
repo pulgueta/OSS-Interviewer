@@ -1,6 +1,6 @@
 {
 	"og": {
-		"title": "AI Interviewer - Prepare for interviews with an AI-powered HR-like professional",
+		"title": "AI Interviewer - Prepare for interviews with an HR AI-powered professional",
 		"short_title": "AI Interviewer",
 		"description": "Get or create interviews from an AI-powered and unbiased HR-like professional! Prepare for interviews or use it in your business.",
 		"author": {
@@ -54,7 +54,7 @@
 	},
 	"landing": {
 		"hero": {
-			"title": "Get or create interviews by an HR-like AI-powered professional in minutes!",
+			"title": "Get or create interviews by an HR AI-powered professional in minutes!",
 			"description": "Improve your interview skills and get feedback on your answers or use it in your own company to interview candidates",
 			"cta": "Create an account",
 			"contact": "Contact Sales"
