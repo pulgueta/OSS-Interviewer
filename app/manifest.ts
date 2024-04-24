@@ -4,7 +4,7 @@ import { og } from '@/i18n/en.json';
 
 export default function manifest(): MetadataRoute.Manifest {
 	return {
-		lang: 'es',
+		lang: 'en',
 		theme_color: '#18181B',
 		background_color: '#0C0A09',
 		display: 'standalone',

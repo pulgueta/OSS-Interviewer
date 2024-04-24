@@ -15,7 +15,10 @@ import { og } from '@/i18n/en.json';
 import './globals.css';
 
 export const metadata: Metadata = {
-	title: og.title,
+	title: {
+		default: og.title,
+		template: `${og.title} - %s`,
+	},
 	description: og.description,
 	authors: [
 		{
@@ -26,15 +29,33 @@ export const metadata: Metadata = {
 	creator: og.author.name,
 	category: og.category,
 	twitter: {
+		card: 'summary_large_image',
 		creator: og.twitter.creator,
 		title: og.twitter.title,
 		description: og.twitter.description,
+		images: [
+			{
+				url: '/og.webp',
+				width: 1200,
+				height: 630,
+				alt: og.short_title,
+			},
+		],
 	},
 	openGraph: {
 		title: og.title,
+		locale: 'en_US',
 		description: og.description,
 		type: 'website',
 		siteName: og.short_title,
+		images: [
+			{
+				url: '/og.webp',
+				width: 1200,
+				height: 630,
+				alt: og.short_title,
+			},
+		],
 	},
 	robots: {
 		index: true,
