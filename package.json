@@ -23,6 +23,8 @@
     "@radix-ui/react-separator": "latest",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-switch": "latest",
+    "@upstash/ratelimit": "^1.1.3",
+    "@upstash/redis": "^1.30.0",
     "@vercel/analytics": "latest",
     "class-variance-authority": "latest",
     "clsx": "latest",
