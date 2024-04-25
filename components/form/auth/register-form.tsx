@@ -1,3 +1,5 @@
+'use client';
+
 import { Link } from 'next-view-transitions';
 
 import { BaseForm } from '../base-form';
@@ -11,7 +13,7 @@ export const RegisterForm = () => {
 			header='Create an account'
 			description='Get access to the best interview preparation program.'
 		>
-			<form>
+			<form style={{ viewTransitionName: 'register' }}>
 				<section className='mb-8 grid w-full grid-cols-1 items-center gap-4 md:grid-cols-2'>
 					<div>
 						<Label htmlFor='firstName'>First name</Label>

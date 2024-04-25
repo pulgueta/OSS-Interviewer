@@ -27,6 +27,7 @@ export const MobileMenu = () => {
 					<li>
 						<SheetClose asChild>
 							<Link
+								style={{ viewTransitionName: 'pricing' }}
 								href={navbar.links.pricing.href}
 								className='font-medium'
 							>
@@ -37,6 +38,7 @@ export const MobileMenu = () => {
 					<li>
 						<SheetClose asChild>
 							<Link
+								style={{ viewTransitionName: 'about' }}
 								href={navbar.links.about.href}
 								className='font-medium'
 							>
@@ -47,6 +49,7 @@ export const MobileMenu = () => {
 					<li>
 						<SheetClose asChild>
 							<Link
+								style={{ viewTransitionName: 'faq' }}
 								href={navbar.links.faq.href}
 								className='font-medium'
 							>
@@ -56,15 +59,17 @@ export const MobileMenu = () => {
 					</li>
 				</ul>
 
-				<Link
-					href={navbar.links.get_started.href}
-					className={buttonVariants({
-						variant: 'color',
-						className: 'w-full',
-					})}
-				>
-					{navbar.links.get_started.label}
-				</Link>
+				<SheetClose asChild>
+					<Link
+						href={navbar.links.get_started.href}
+						className={buttonVariants({
+							variant: 'color',
+							className: 'w-full',
+						})}
+					>
+						{navbar.links.get_started.label}
+					</Link>
+				</SheetClose>
 			</SheetContent>
 		</Sheet>
 	);
