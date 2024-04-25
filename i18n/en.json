@@ -73,5 +73,91 @@
 				"description": "With AInterviewer, you can create an interview based on the job and candidate's profile, choose the questions you want to ask and the time to answer each one. After the interview, you can review the candidate's performance, give feedback and move on with the hiring process."
 			}
 		}
+	},
+	"register": {
+		"form": {
+			"title": "Create an account",
+			"description": "Get access to the best interview preparation program.",
+			"button": "Register",
+			"login": "Already have an account? Login",
+			"labels": {
+				"username": {
+					"label": "Username",
+					"placeholder": "pulgueta"
+				},
+				"firstName": {
+					"label": "First name",
+					"placeholder": "Andres"
+				},
+				"lastName": {
+					"label": "Last name",
+					"placeholder": "Rodriguez"
+				},
+				"email": {
+					"label": "Email",
+					"placeholder": "your@email.com"
+				},
+				"password": {
+					"label": "Password",
+					"placeholder": "*******"
+				},
+				"confirmPassword": {
+					"label": "Confirm your password",
+					"placeholder": "*******"
+				}
+			}
+		},
+		"schema": {
+			"username": {
+				"minLength": 4,
+				"maxLength": 32,
+				"minLengthError": "Your username must be at least 4 characters long.",
+				"maxLengthError": "Your username must not be longer than 32 characters.",
+				"invalidTypeError": "Your username must be a string.",
+				"emptyError": "Please enter your username."
+			},
+			"firstName": {
+				"minLength": 4,
+				"maxLength": 64,
+				"minLengthError": "Your first name must be at least 6 characters long.",
+				"maxLengthError": "Your first name must not be longer than 64 characters.",
+				"invalidTypeError": "Your first name must be a string.",
+				"emptyError": "Please enter your first name."
+			},
+			"lastName": {
+				"minLength": 4,
+				"maxLength": 64,
+				"minLengthError": "Your last name must be at least 6 characters long.",
+				"maxLengthError": "Your last name must not be longer than 64 characters.",
+				"invalidTypeError": "Your last name must be a string.",
+				"emptyError": "Please enter your last name."
+			},
+			"email": {
+				"minLength": 4,
+				"maxLength": 128,
+				"minLengthError": "Email must be at least 6 characters long.",
+				"maxLengthError": "Email must not be longer than 128 characters.",
+				"invalidTypeError": "Email must be a string and a valid address.",
+				"noEmailError": "Please enter a valid email.",
+				"emptyError": "Please enter your email."
+			},
+			"password": {
+				"minLength": 6,
+				"maxLength": 32,
+				"minLengthError": "Your password must be at least 6 characters long.",
+				"maxLengthError": "Your password must not be longer than 32 characters.",
+				"invalidTypeError": "Your password must be a string.",
+				"emptyError": "Please enter your password."
+			},
+			"confirmPassword": {
+				"minLength": 6,
+				"maxLength": 32,
+				"minLengthError": "Your password must be at least 6 characters long.",
+				"maxLengthError": "Your password must not be longer than 32 characters.",
+				"invalidTypeError": "Your password must be a string.",
+				"emptyError": "Please enter your password.",
+				"matcher": "Passwords do not match."
+			}
+		}
 	}
 }
