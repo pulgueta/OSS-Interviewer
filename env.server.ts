@@ -16,4 +16,17 @@ export const env = createEnv({
 		UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN,
 		ARGON_SECRET: process.env.ARGON_SECRET,
 	},
+	onValidationError: (error) => {
+		console.error(
+			'❌ Invalid environment variables:',
+			error.flatten().fieldErrors,
+		);
+
+		throw new Error('Invalid environment variables');
+	},
+	onInvalidAccess: () => {
+		throw new Error(
+			'❌ Attempted to access a server-side environment variable on the client',
+		);
+	},
 });
