@@ -6,9 +6,7 @@ export const env = createEnv({
 		DATABASE_URL: string().url(),
 		UPSTASH_REDIS_REST_URL: string().url(),
 		UPSTASH_REDIS_REST_TOKEN: string().min(32),
-		ARGON_SECRET: string().min(
-			process.env.NODE_ENV === 'production' ? 128 : 64,
-		),
+		ARGON_SECRET: string().min(60),
 	},
 	runtimeEnv: {
 		DATABASE_URL: process.env.DATABASE_URL,
@@ -22,7 +20,10 @@ export const env = createEnv({
 			error.flatten().fieldErrors,
 		);
 
-		throw new Error('Invalid environment variables');
+		throw new Error(
+			'Invalid environment variables',
+			error.flatten().fieldErrors,
+		);
 	},
 	onInvalidAccess: () => {
 		throw new Error(
