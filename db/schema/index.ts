@@ -1,4 +1,3 @@
-import { createId } from '@/lib/utils';
 import { InferInsertModel, InferSelectModel } from 'drizzle-orm';
 import {
 	integer,
@@ -9,6 +8,8 @@ import {
 	timestamp,
 	varchar,
 } from 'drizzle-orm/pg-core';
+
+import { createId } from '@/lib/utils';
 
 const accountTypeEnum = pgEnum('account_type', ['personal', 'enterprise']);
 
