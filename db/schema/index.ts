@@ -10,7 +10,7 @@ import {
 	varchar,
 } from 'drizzle-orm/pg-core';
 
-const accountTypeEnum = pgEnum('accountType', ['personal', 'enterprise']);
+const accountTypeEnum = pgEnum('account_type', ['personal', 'enterprise']);
 
 // Users table
 
@@ -19,8 +19,8 @@ export const users = pgTable('users', {
 		.primaryKey()
 		.$defaultFn(() => createId('user')),
 	username: varchar('username', { length: 32 }).notNull(),
-	firstName: varchar('firstName', { length: 64 }).notNull(),
-	lastName: varchar('lastName', { length: 64 }).notNull(),
+	firstName: varchar('first_name', { length: 64 }).notNull(),
+	lastName: varchar('last_name', { length: 64 }).notNull(),
 	email: varchar('email', { length: 128 }).unique().notNull(),
 	password: varchar('password', { length: 256 }).notNull(),
 	createdAt: timestamp('created_at', {
@@ -68,7 +68,7 @@ export const accounts = pgTable('accounts', {
 	profileId: varchar('profile_id').references(() => users.id, {
 		onDelete: 'cascade',
 	}),
-	accountType: accountTypeEnum('accountType'),
+	accountType: accountTypeEnum('account_type'),
 	credits: integer('credits').default(3),
 	createdAt: timestamp('created_at', {
 		mode: 'date',
