@@ -1,4 +1,8 @@
 {
+	"api": {
+		"_429": "Too many requests!",
+		"_400": "Invalid input data"
+	},
 	"og": {
 		"title": "AI Interviewer - Prepare for interviews with an HR AI-powered professional",
 		"short_title": "AI Interviewer",
@@ -160,11 +164,12 @@
 			}
 		},
 		"api": {
+			"_200": "Please check your inbox to verify your email",
 			"_201": "Your account has been created!",
-			"_429": "Too many requests!",
 			"_400": {
 				"invalidInput": "Invalid input data",
-				"emailTaken": "Email is already taken"
+				"emailTaken": "Email is already taken",
+				"tokenExpired": "Token is expired, please use a new one"
 			},
 			"_500": "Something happened and your account cannot be created. Please, try again.",
 			"external": "Error sending confirmation email."
