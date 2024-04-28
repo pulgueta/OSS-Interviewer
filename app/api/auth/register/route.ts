@@ -12,10 +12,11 @@ export const POST = async (req: NextRequest) => {
 
 	const allowed = await ratelimiter.limit(ip);
 
-	const { _201, _429, _400, _500, external } = translations.register.api;
+	const { _201, _400, _500, external } = translations.register.api;
+	const { api } = translations;
 
 	if (!allowed.success) {
-		return Response.json({ message: _429 }, { status: 429 });
+		return Response.json({ message: api._429 }, { status: 429 });
 	}
 
 	const rawBody = await req.json();
