@@ -159,5 +159,42 @@
 				"matcher": "Passwords do not match."
 			}
 		}
+	},
+	"login": {
+		"form": {
+			"title": "Login to your account",
+			"description": "Welcome back! Ready to practice?",
+			"button": "Login",
+			"register": "Don't have an account? Register",
+			"labels": {
+				"email": {
+					"label": "Email",
+					"placeholder": "your@email.com"
+				},
+				"password": {
+					"label": "Password",
+					"placeholder": "*******"
+				}
+			}
+		},
+		"schema": {
+			"email": {
+				"minLength": 4,
+				"maxLength": 128,
+				"minLengthError": "Email must be at least 6 characters long.",
+				"maxLengthError": "Email must not be longer than 128 characters.",
+				"invalidTypeError": "Email must be a string and a valid address.",
+				"noEmailError": "Please enter a valid email.",
+				"emptyError": "Please enter your email."
+			},
+			"password": {
+				"minLength": 6,
+				"maxLength": 32,
+				"minLengthError": "Your password must be at least 6 characters long.",
+				"maxLengthError": "Your password must not be longer than 32 characters.",
+				"invalidTypeError": "Your password must be a string.",
+				"emptyError": "Please enter your password."
+			}
+		}
 	}
 }
