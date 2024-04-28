@@ -158,6 +158,16 @@
 				"emptyError": "Please enter your password.",
 				"matcher": "Passwords do not match."
 			}
+		},
+		"api": {
+			"_201": "Your account has been created!",
+			"_429": "Too many requests!",
+			"_400": {
+				"invalidInput": "Invalid input data",
+				"emailTaken": "Email is already taken"
+			},
+			"_500": "Something happened and your account cannot be created. Please, try again.",
+			"external": "Error sending confirmation email."
 		}
 	},
 	"login": {
