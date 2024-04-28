@@ -9,10 +9,12 @@
 		"lint": "next lint",
 		"prepare": "husky",
 		"commitlint": "commitlint --edit",
-		"test": "Testing...",
-		"prettier": "eslint --fix && prettier --check . --write"
+		"prettier": "eslint --fix && prettier --check . --write",
+		"db:studio": "bunx drizzle-kit studio",
+		"db:push": "bunx drizzle-kit push:pg"
 	},
 	"dependencies": {
+		"@auth/drizzle-adapter": "^1.0.1",
 		"@hookform/resolvers": "^3.3.4",
 		"@neondatabase/serverless": "^0.9.1",
 		"@radix-ui/react-accordion": "latest",
@@ -38,6 +40,7 @@
 		"lucide-react": "latest",
 		"nanoid": "^5.0.7",
 		"next": "latest",
+		"next-auth": "^5.0.0-beta.17",
 		"next-themes": "^0.3.0",
 		"next-view-transitions": "latest",
 		"react": "latest",
@@ -52,6 +55,7 @@
 		"@commitlint/config-conventional": "latest",
 		"@commitlint/format": "latest",
 		"@types/node": "latest",
+		"@types/pg": "^8.11.5",
 		"@types/react": "18.3",
 		"@types/react-dom": "18.3",
 		"@typescript-eslint/parser": "latest",
@@ -64,6 +68,7 @@
 		"eslint-plugin-tailwindcss": "latest",
 		"husky": "latest",
 		"lint-staged": "latest",
+		"pg": "^8.11.5",
 		"postcss": "latest",
 		"prettier": "latest",
 		"prettier-plugin-tailwindcss": "latest",
