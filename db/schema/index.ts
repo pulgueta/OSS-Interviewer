@@ -1,4 +1,8 @@
-import type { InferInsertModel, InferSelectModel } from 'drizzle-orm';
+import {
+	relations,
+	type InferInsertModel,
+	type InferSelectModel,
+} from 'drizzle-orm';
 import {
 	integer,
 	json,
@@ -6,12 +10,16 @@ import {
 	pgTable,
 	text,
 	timestamp,
+	uuid,
 	varchar,
 } from 'drizzle-orm/pg-core';
 
 import { createId } from '@/lib/utils';
 
-const accountTypeEnum = pgEnum('account_type', ['personal', 'enterprise']);
+export const accountTypeEnum = pgEnum('account_type', [
+	'personal',
+	'enterprise',
+]);
 
 // Users table
 
@@ -24,18 +32,44 @@ export const users = pgTable('users', {
 	lastName: varchar('last_name', { length: 64 }).notNull(),
 	email: varchar('email', { length: 128 }).unique().notNull(),
 	password: varchar('password', { length: 256 }).notNull(),
-	createdAt: timestamp('created_at', {
-		mode: 'date',
-		precision: 3,
-	}).defaultNow(),
-	updatedAt: timestamp('updated_at', {
-		mode: 'date',
-		precision: 3,
-	}).$onUpdate(() => new Date()),
+	photoURL: varchar('photo_url'),
+	createdAt: timestamp('created_at').defaultNow(),
+	updatedAt: timestamp('updated_at')
+		.$onUpdate(() => new Date())
+		.defaultNow(),
 });
+
+export const userRelations = relations(users, ({ one }) => ({
+	account: one(accounts),
+}));
 
 export type UserSelect = InferSelectModel<typeof users>;
 export type UserInsert = InferInsertModel<typeof users>;
+
+// Accounts table
+
+export const accounts = pgTable('accounts', {
+	id: text('id')
+		.primaryKey()
+		.$defaultFn(() => createId('account')),
+	profileId: varchar('profile_id').references(() => users.id, {
+		onDelete: 'cascade',
+	}),
+	accountType: accountTypeEnum('account_type').default('personal'),
+	credits: integer('credits').default(3),
+	teams: json('teams').array(),
+	createdAt: timestamp('created_at').defaultNow(),
+	updatedAt: timestamp('updated_at')
+		.$onUpdate(() => new Date())
+		.defaultNow(),
+});
+
+export const accountsRelations = relations(accounts, ({ many }) => ({
+	teams: many(teams),
+}));
+
+export type AccountsSelect = InferSelectModel<typeof accounts>;
+export type AccountsInsert = InferInsertModel<typeof accounts>;
 
 // Teams table
 
@@ -47,39 +81,33 @@ export const teams = pgTable('teams', {
 		onDelete: 'cascade',
 	}),
 	users: json('users').$type<UserSelect[]>(),
-	createdAt: timestamp('created_at', {
-		mode: 'date',
-		precision: 3,
-	}).defaultNow(),
-	updatedAt: timestamp('updated_at', {
-		mode: 'date',
-		precision: 3,
-	}).$onUpdate(() => new Date()),
+	createdAt: timestamp('created_at').defaultNow(),
+	updatedAt: timestamp('updated_at')
+		.$onUpdate(() => new Date())
+		.defaultNow(),
 });
+
+export const teamsRelation = relations(teams, ({ one }) => ({
+	account: one(accounts),
+}));
 
 export type TeamsSelect = InferSelectModel<typeof teams>;
 export type TeamsInsert = InferInsertModel<typeof teams>;
 
-// Accounts table
-
-export const accounts = pgTable('accounts', {
+export const verificationToken = pgTable('verification_token', {
 	id: text('id')
 		.primaryKey()
-		.$defaultFn(() => createId('account')),
-	profileId: varchar('profile_id').references(() => users.id, {
-		onDelete: 'cascade',
-	}),
-	accountType: accountTypeEnum('account_type'),
-	credits: integer('credits').default(3),
-	createdAt: timestamp('created_at', {
-		mode: 'date',
-		precision: 3,
-	}).defaultNow(),
-	updatedAt: timestamp('updated_at', {
-		mode: 'date',
-		precision: 3,
-	}).$onUpdate(() => new Date()),
+		.$defaultFn(() => createId('token')),
+	userId: varchar('user_id')
+		.references(() => users.id, { onDelete: 'cascade' })
+		.notNull(),
+	code: uuid('code').defaultRandom(),
+	expires: timestamp('expires'),
+	createdAt: timestamp('created_at').defaultNow(),
+	updatedAt: timestamp('updated_at')
+		.$onUpdate(() => new Date())
+		.defaultNow(),
 });
 
-export type AccountsSelect = InferSelectModel<typeof accounts>;
-export type AccountsInsert = InferInsertModel<typeof accounts>;
+export type TokenSelect = InferSelectModel<typeof verificationToken>;
+export type TokenInsert = InferInsertModel<typeof verificationToken>;
