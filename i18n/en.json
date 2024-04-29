@@ -210,6 +210,17 @@
 				"invalidTypeError": "Your password must be a string.",
 				"emptyError": "Please enter your password."
 			}
+		},
+		"api": {
+			"_200": "Welcome back",
+			"_400": "Invalid input data",
+			"_404": "User doesn't exist",
+			"_401": {
+				"invalidCredentials": "Invalid credentials. Please check your information",
+				"noEmailVerified": "You must verify your email before signing in",
+				"accessDenied": "Access denied"
+			},
+			"_500": "An error ocurred. Please, try again."
 		}
 	}
 }
