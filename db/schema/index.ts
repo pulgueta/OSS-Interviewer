@@ -4,6 +4,7 @@ import {
 	type InferSelectModel,
 } from 'drizzle-orm';
 import {
+	boolean,
 	integer,
 	json,
 	pgEnum,
@@ -21,6 +22,17 @@ export const accountTypeEnum = pgEnum('account_type', [
 	'enterprise',
 ]);
 
+export const roleEnum = pgEnum('role', ['user', 'admin']);
+
+export const planEnum = pgEnum('plan', [
+	'free',
+	'basic',
+	'professional',
+	'team',
+	'enterprise',
+	'custom',
+]);
+
 // Users table
 
 export const users = pgTable('users', {
@@ -32,6 +44,9 @@ export const users = pgTable('users', {
 	lastName: varchar('last_name', { length: 64 }).notNull(),
 	email: varchar('email', { length: 128 }).unique().notNull(),
 	password: varchar('password', { length: 256 }).notNull(),
+	role: roleEnum('role').default('user'),
+	plan: planEnum('plan').default('free'),
+	emailVerified: boolean('emailVerified').default(false),
 	photoURL: varchar('photo_url'),
 	createdAt: timestamp('created_at').defaultNow(),
 	updatedAt: timestamp('updated_at')
