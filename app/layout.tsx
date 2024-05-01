@@ -10,6 +10,7 @@ import { ViewTransitions } from 'next-view-transitions';
 import { ClientProviders } from '@/providers';
 import { Navbar } from '@/components/navbar/navbar';
 import { Footer } from '@/components/footer/footer';
+import { Toaster } from '@/components/ui/sonner';
 import { og } from '@/i18n/en.json';
 
 import './globals.css';
@@ -106,6 +107,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
 					{process.env.NODE_ENV === 'production' && <Analytics />}
 					<ClientProviders>
 						<Navbar />
+						<Toaster richColors position='top-right' />
 						{children}
 						<Footer />
 					</ClientProviders>

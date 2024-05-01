@@ -22,6 +22,7 @@ export const Navbar = () => {
 					</li>
 					<li>
 						<Link
+							style={{ viewTransitionName: 'about' }}
 							href={navbar.links.about.href}
 							className='font-medium'
 						>
@@ -30,6 +31,7 @@ export const Navbar = () => {
 					</li>
 					<li>
 						<Link
+							style={{ viewTransitionName: 'faq' }}
 							href={navbar.links.faq.href}
 							className='font-medium'
 						>
@@ -39,6 +41,7 @@ export const Navbar = () => {
 				</ul>
 
 				<Link
+					style={{ viewTransitionName: 'register' }}
 					href={navbar.links.get_started.href}
 					className={buttonVariants({
 						variant: 'color',

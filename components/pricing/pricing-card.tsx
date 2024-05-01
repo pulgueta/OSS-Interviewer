@@ -53,6 +53,7 @@ export const PricingCard: FC<Pricing> = ({
 			</ul>
 			<footer className='border-t pt-4'>
 				<Link
+					style={{ viewTransitionName: title }}
 					href='/pricing'
 					className={buttonVariants({ className: 'w-full' })}
 				>

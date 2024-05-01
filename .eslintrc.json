@@ -3,7 +3,8 @@
 		"next/core-web-vitals",
 		"prettier",
 		"plugin:tailwindcss/recommended",
-		"plugin:eslint-plugin-prettier/recommended"
+		"plugin:eslint-plugin-prettier/recommended",
+		"plugin:drizzle/recommended"
 	],
 	"overrides": [
 		{
@@ -14,8 +15,11 @@
 	"rules": {
 		"no-unused-vars": "error",
 		"no-unused-expressions": "error",
-		"no-unused-labels": "error"
+		"no-unused-labels": "error",
+		"drizzle/enforce-delete-with-where": "error",
+		"drizzle/enforce-update-with-where": "error"
 	},
+	"plugins": ["drizzle"],
 	"ignorePatterns": [
 		"node_modules/",
 		".next/",

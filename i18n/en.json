@@ -1,4 +1,8 @@
 {
+	"api": {
+		"_429": "Too many requests!",
+		"_400": "Invalid input data"
+	},
 	"og": {
 		"title": "AI Interviewer - Prepare for interviews with an HR AI-powered professional",
 		"short_title": "AI Interviewer",
@@ -72,6 +76,151 @@
 				"title": "Don't waste time with stressful interviews and processes.",
 				"description": "With AInterviewer, you can create an interview based on the job and candidate's profile, choose the questions you want to ask and the time to answer each one. After the interview, you can review the candidate's performance, give feedback and move on with the hiring process."
 			}
+		}
+	},
+	"register": {
+		"form": {
+			"title": "Create an account",
+			"description": "Get access to the best interview preparation program.",
+			"button": "Register",
+			"login": "Already have an account? Login",
+			"labels": {
+				"username": {
+					"label": "Username",
+					"placeholder": "pulgueta"
+				},
+				"firstName": {
+					"label": "First name",
+					"placeholder": "Andres"
+				},
+				"lastName": {
+					"label": "Last name",
+					"placeholder": "Rodriguez"
+				},
+				"email": {
+					"label": "Email",
+					"placeholder": "your@email.com"
+				},
+				"password": {
+					"label": "Password",
+					"placeholder": "*******"
+				},
+				"confirmPassword": {
+					"label": "Confirm your password",
+					"placeholder": "*******"
+				}
+			}
+		},
+		"schema": {
+			"username": {
+				"minLength": 4,
+				"maxLength": 32,
+				"minLengthError": "Your username must be at least 4 characters long.",
+				"maxLengthError": "Your username must not be longer than 32 characters.",
+				"invalidTypeError": "Your username must be a string.",
+				"emptyError": "Please enter your username."
+			},
+			"firstName": {
+				"minLength": 4,
+				"maxLength": 64,
+				"minLengthError": "Your first name must be at least 6 characters long.",
+				"maxLengthError": "Your first name must not be longer than 64 characters.",
+				"invalidTypeError": "Your first name must be a string.",
+				"emptyError": "Please enter your first name."
+			},
+			"lastName": {
+				"minLength": 4,
+				"maxLength": 64,
+				"minLengthError": "Your last name must be at least 6 characters long.",
+				"maxLengthError": "Your last name must not be longer than 64 characters.",
+				"invalidTypeError": "Your last name must be a string.",
+				"emptyError": "Please enter your last name."
+			},
+			"email": {
+				"minLength": 4,
+				"maxLength": 128,
+				"minLengthError": "Email must be at least 6 characters long.",
+				"maxLengthError": "Email must not be longer than 128 characters.",
+				"invalidTypeError": "Email must be a string and a valid address.",
+				"noEmailError": "Please enter a valid email.",
+				"emptyError": "Please enter your email."
+			},
+			"password": {
+				"minLength": 6,
+				"maxLength": 32,
+				"minLengthError": "Your password must be at least 6 characters long.",
+				"maxLengthError": "Your password must not be longer than 32 characters.",
+				"invalidTypeError": "Your password must be a string.",
+				"emptyError": "Please enter your password."
+			},
+			"confirmPassword": {
+				"minLength": 6,
+				"maxLength": 32,
+				"minLengthError": "Your password must be at least 6 characters long.",
+				"maxLengthError": "Your password must not be longer than 32 characters.",
+				"invalidTypeError": "Your password must be a string.",
+				"emptyError": "Please enter your password.",
+				"matcher": "Passwords do not match."
+			}
+		},
+		"api": {
+			"_200": "Please check your inbox to verify your email",
+			"_201": "Your account has been created!",
+			"_400": {
+				"invalidInput": "Invalid input data",
+				"emailTaken": "Email is already taken",
+				"tokenExpired": "Token is expired, please use a new one"
+			},
+			"_500": "Something happened and your account cannot be created. Please, try again.",
+			"external": "Error sending confirmation email."
+		}
+	},
+	"login": {
+		"form": {
+			"title": "Login to your account",
+			"description": "Welcome back! Ready to practice?",
+			"button": "Login",
+			"register": "Don't have an account? Register",
+			"labels": {
+				"email": {
+					"label": "Email",
+					"placeholder": "your@email.com"
+				},
+				"password": {
+					"label": "Password",
+					"placeholder": "*******"
+				}
+			}
+		},
+		"schema": {
+			"email": {
+				"minLength": 4,
+				"maxLength": 128,
+				"minLengthError": "Email must be at least 6 characters long.",
+				"maxLengthError": "Email must not be longer than 128 characters.",
+				"invalidTypeError": "Email must be a string and a valid address.",
+				"noEmailError": "Please enter a valid email.",
+				"emptyError": "Please enter your email."
+			},
+			"password": {
+				"minLength": 6,
+				"maxLength": 32,
+				"minLengthError": "Your password must be at least 6 characters long.",
+				"maxLengthError": "Your password must not be longer than 32 characters.",
+				"invalidTypeError": "Your password must be a string.",
+				"emptyError": "Please enter your password."
+			}
+		},
+		"api": {
+			"_200": "Welcome back",
+			"_400": "Invalid input data",
+			"_404": "User doesn't exist",
+			"_401": {
+				"invalidCredentials": "Invalid credentials. Please check your information",
+				"noEmailVerified": "You must verify your email before signing in",
+				"accessDenied": "Access denied"
+			},
+			"_500": "An error ocurred. Please, try again."
 		}
 	}
 }
