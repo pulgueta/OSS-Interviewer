@@ -1,4 +1,4 @@
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 
 import createJITI from 'jiti';
 
@@ -14,6 +14,21 @@ const nextConfig = {
 		fetches: {
 			fullUrl: true,
 		},
+	},
+	webpack: (config, { isServer, webpack }) => {
+		config.plugins.push(
+			new webpack.NormalModuleReplacementPlugin(/^node:/, (resource) => {
+				resource.request = resource.request.replace(/^node:/, "");
+			})
+		);
+
+		if (!isServer) {
+			config.resolve.fallback = {
+				fs: false,
+			}
+		}
+
+		return config;
 	},
 };
 
