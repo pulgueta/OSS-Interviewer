@@ -6,5 +6,6 @@ export default function robots(): MetadataRoute.Robots {
 			userAgent: '*',
 			allow: '/',
 		},
+		sitemap: 'https://oss-interviewer.vercel.app/sitemap.xml',
 	};
 }
