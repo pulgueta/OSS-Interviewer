@@ -7,7 +7,7 @@ import { Link } from 'next-view-transitions';
 import { buttonVariants } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { SwitchPricing } from '@/components/pricing/switch-pricing';
-import { landing } from '@/i18n/en.json';
+import { default as translations } from '@/i18n/en.json';
 
 const Home = () => {
 	return (
@@ -17,10 +17,10 @@ const Home = () => {
 				<div className='absolute -left-96 bottom-0 -z-10 size-72 animate-pulse bg-rose-400/10 blur-3xl md:size-72' />
 
 				<h1 className='mb-4 animate-fade-down text-balance text-center text-4xl font-extrabold leading-9 tracking-tighter animate-duration-[1500ms] animate-ease-in-out md:text-5xl lg:text-6xl'>
-					{landing.hero.title}
+					{translations.landing.hero.title}
 				</h1>
 				<h2 className='mb-4 animate-fade-down text-balance text-center text-xl font-semibold leading-6 tracking-tight animate-delay-700 animate-duration-[1500] animate-ease-in-out md:text-2xl lg:text-3xl'>
-					{landing.hero.description}
+					{translations.landing.hero.description}
 				</h2>
 				<section className='flex w-full animate-fade flex-col items-center justify-center gap-4 animate-delay-1000 animate-duration-[1300] md:flex-row'>
 					<Link
@@ -32,7 +32,7 @@ const Home = () => {
 							className: 'w-full md:w-auto',
 						})}
 					>
-						{landing.hero.cta}
+						{translations.landing.hero.cta}
 					</Link>
 					<Link
 						style={{ viewTransitionName: 'contact' }}
@@ -43,7 +43,7 @@ const Home = () => {
 							className: 'w-full md:w-auto',
 						})}
 					>
-						{landing.hero.contact}
+						{translations.landing.hero.contact}
 					</Link>
 				</section>
 
@@ -56,13 +56,13 @@ const Home = () => {
 			<section className='mb-16 rounded border bg-background/80 px-0 py-12 backdrop-blur md:px-2 lg:px-0'>
 				<div className='container flex flex-col items-center justify-center'>
 					<span className='mb-6 rounded-full border bg-primary-foreground px-4 py-2 font-normal tracking-normal shadow-lg shadow-black/20 dark:shadow-neutral-600/50'>
-						{landing.second.badges.practicing}
+						{translations.landing.second.badges.practicing}
 					</span>
 					<h3 className='mb-4 text-balance text-center text-3xl font-bold leading-7 tracking-tighter'>
-						{landing.second.personal.title}
+						{translations.landing.second.personal.title}
 					</h3>
 					<p className='text-pretty text-center text-lg font-normal leading-6 tracking-tight md:max-w-prose'>
-						{landing.second.personal.description}
+						{translations.landing.second.personal.description}
 					</p>
 				</div>
 
@@ -70,13 +70,13 @@ const Home = () => {
 
 				<div className='container flex flex-col items-center justify-center'>
 					<span className='mb-6 rounded-full border border-primary/20 bg-color px-4 py-2 font-normal tracking-normal text-color-foreground shadow-lg shadow-color'>
-						{landing.second.badges.hiring}
+						{translations.landing.second.badges.hiring}
 					</span>
 					<h3 className='mb-4 text-balance text-center text-3xl font-bold leading-7 tracking-tighter'>
-						{landing.second.enterprise.title}
+						{translations.landing.second.enterprise.title}
 					</h3>
 					<p className='text-pretty text-center text-lg font-normal leading-6 tracking-tight md:max-w-prose'>
-						{landing.second.enterprise.description}
+						{translations.landing.second.enterprise.description}
 					</p>
 				</div>
 			</section>

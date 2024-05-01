@@ -11,50 +11,50 @@ import { ClientProviders } from '@/providers';
 import { Navbar } from '@/components/navbar/navbar';
 import { Footer } from '@/components/footer/footer';
 import { Toaster } from '@/components/ui/sonner';
-import { og } from '@/i18n/en.json';
+import { default as translations } from '@/i18n/en.json';
 
 import './globals.css';
 
 export const metadata: Metadata = {
 	title: {
-		default: og.title,
-		template: `${og.title} - %s`,
+		default: translations.og.title,
+		template: `${translations.og.title} - %s`,
 	},
-	description: og.description,
+	description: translations.og.description,
 	authors: [
 		{
-			name: og.author.name,
-			url: og.author.url,
+			name: translations.og.author.name,
+			url: translations.og.author.url,
 		},
 	],
-	creator: og.author.name,
-	category: og.category,
+	creator: translations.og.author.name,
+	category: translations.og.category,
 	twitter: {
 		card: 'summary_large_image',
-		creator: og.twitter.creator,
-		title: og.twitter.title,
-		description: og.twitter.description,
+		creator: translations.og.twitter.creator,
+		title: translations.og.twitter.title,
+		description: translations.og.twitter.description,
 		images: [
 			{
-				url: '/og.webp',
+				url: '/translations.og.webp',
 				width: 1200,
 				height: 630,
-				alt: og.short_title,
+				alt: translations.og.short_title,
 			},
 		],
 	},
 	openGraph: {
-		title: og.title,
+		title: translations.og.title,
 		locale: 'en_US',
-		description: og.description,
+		description: translations.og.description,
 		type: 'website',
-		siteName: og.short_title,
+		siteName: translations.og.short_title,
 		images: [
 			{
-				url: '/og.webp',
+				url: '/translations.og.webp',
 				width: 1200,
 				height: 630,
-				alt: og.short_title,
+				alt: translations.og.short_title,
 			},
 		],
 	},

@@ -15,7 +15,7 @@ import {
 	NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
-import { navbar } from '@/i18n/en.json';
+import { default as translations } from '@/i18n/en.json';
 
 export const ClientNavigationMenu = () => {
 	return (
@@ -23,21 +23,27 @@ export const ClientNavigationMenu = () => {
 			<NavigationMenuList>
 				<NavigationMenuItem>
 					<NavigationMenuTrigger className='text-base'>
-						{navbar.links.pricing.label}
+						{translations.navbar.links.pricing.label}
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul className='grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
 							<ListItem
-								href={`${navbar.links.pricing.href}?pr=personal`}
+								href={`${translations.navbar.links.pricing.href}?pr=personal`}
 								title='Personal'
 							>
-								{navbar.pricing.personal.description}
+								{
+									translations.navbar.pricing.personal
+										.description
+								}
 							</ListItem>
 							<ListItem
-								href={`${navbar.links.pricing.href}?pr=enterprise`}
+								href={`${translations.navbar.links.pricing.href}?pr=enterprise`}
 								title='Enterprise'
 							>
-								{navbar.pricing.enterprise.description}
+								{
+									translations.navbar.pricing.enterprise
+										.description
+								}
 							</ListItem>
 						</ul>
 					</NavigationMenuContent>

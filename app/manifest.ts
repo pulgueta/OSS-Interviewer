@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-import { og } from '@/i18n/en.json';
+import { default as translations } from '@/i18n/en.json';
 
 export default function manifest(): MetadataRoute.Manifest {
 	return {
@@ -11,9 +11,9 @@ export default function manifest(): MetadataRoute.Manifest {
 		display_override: ['fullscreen', 'standalone'],
 		scope: '/',
 		start_url: '/',
-		name: og.title,
-		description: og.description,
-		short_name: og.short_title,
+		name: translations.og.title,
+		description: translations.og.description,
+		short_name: translations.og.short_title,
 		orientation: 'portrait',
 		icons: [
 			{

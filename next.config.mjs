@@ -18,14 +18,14 @@ const nextConfig = {
 	webpack: (config, { isServer, webpack }) => {
 		config.plugins.push(
 			new webpack.NormalModuleReplacementPlugin(/^node:/, (resource) => {
-				resource.request = resource.request.replace(/^node:/, "");
-			})
+				resource.request = resource.request.replace(/^node:/, '');
+			}),
 		);
 
 		if (!isServer) {
 			config.resolve.fallback = {
 				fs: false,
-			}
+			};
 		}
 
 		return config;

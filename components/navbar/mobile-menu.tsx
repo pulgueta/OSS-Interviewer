@@ -8,7 +8,7 @@ import {
 	SheetContent,
 	SheetTrigger,
 } from '@/components/ui/sheet';
-import { navbar } from '@/i18n/en.json';
+import { default as translations } from '@/i18n/en.json';
 
 export const MobileMenu = () => {
 	return (
@@ -19,7 +19,7 @@ export const MobileMenu = () => {
 					size='icon'
 					className='flex md:hidden'
 				>
-					<MenuIcon aria-label={navbar.buttonLabel} />
+					<MenuIcon aria-label={translations.navbar.buttonLabel} />
 				</Button>
 			</SheetTrigger>
 			<SheetContent>
@@ -28,10 +28,10 @@ export const MobileMenu = () => {
 						<SheetClose asChild>
 							<Link
 								style={{ viewTransitionName: 'pricing' }}
-								href={navbar.links.pricing.href}
+								href={translations.navbar.links.pricing.href}
 								className='font-medium'
 							>
-								{navbar.links.pricing.label}
+								{translations.navbar.links.pricing.label}
 							</Link>
 						</SheetClose>
 					</li>
@@ -39,10 +39,10 @@ export const MobileMenu = () => {
 						<SheetClose asChild>
 							<Link
 								style={{ viewTransitionName: 'about' }}
-								href={navbar.links.about.href}
+								href={translations.navbar.links.about.href}
 								className='font-medium'
 							>
-								{navbar.links.about.label}
+								{translations.navbar.links.about.label}
 							</Link>
 						</SheetClose>
 					</li>
@@ -50,10 +50,10 @@ export const MobileMenu = () => {
 						<SheetClose asChild>
 							<Link
 								style={{ viewTransitionName: 'faq' }}
-								href={navbar.links.faq.href}
+								href={translations.navbar.links.faq.href}
 								className='font-medium'
 							>
-								{navbar.links.faq.label}
+								{translations.navbar.links.faq.label}
 							</Link>
 						</SheetClose>
 					</li>
@@ -61,13 +61,13 @@ export const MobileMenu = () => {
 
 				<SheetClose asChild>
 					<Link
-						href={navbar.links.get_started.href}
+						href={translations.navbar.links.get_started.href}
 						className={buttonVariants({
 							variant: 'color',
 							className: 'w-full',
 						})}
 					>
-						{navbar.links.get_started.label}
+						{translations.navbar.links.get_started.label}
 					</Link>
 				</SheetClose>
 			</SheetContent>
