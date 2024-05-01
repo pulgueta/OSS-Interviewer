@@ -44,9 +44,11 @@ export const POST = async (req: NextRequest) => {
 		return Response.json({ message: _400.emailTaken }, { status: 400 });
 	}
 
+	// eslint-disable-next-line no-unused-vars
 	const { confirmPassword, ...rest } = body.data;
 
 	try {
+		// eslint-disable-next-line no-unused-vars
 		const { password, ...user } = await createUser({ ...rest });
 		const account = await createAccount({ profileId: user.id });
 
