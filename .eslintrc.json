@@ -7,11 +7,7 @@
 	],
 	"overrides": [
 		{
-			"files": [
-				"*.ts",
-				"*.tsx",
-				"*.js"
-			],
+			"files": ["*.ts", "*.tsx", "*.js"],
 			"parser": "@typescript-eslint/parser"
 		}
 	],
@@ -22,9 +18,7 @@
 		"drizzle/enforce-delete-with-where": "error",
 		"drizzle/enforce-update-with-where": "error"
 	},
-	"plugins": [
-		"drizzle"
-	],
+	"plugins": ["drizzle"],
 	"ignorePatterns": [
 		"node_modules/",
 		".next/",
