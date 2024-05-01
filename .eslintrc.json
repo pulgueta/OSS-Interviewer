@@ -14,11 +14,8 @@
 	"rules": {
 		"no-unused-vars": "error",
 		"no-unused-expressions": "error",
-		"no-unused-labels": "error",
-		"drizzle/enforce-delete-with-where": "error",
-		"drizzle/enforce-update-with-where": "error"
+		"no-unused-labels": "error"
 	},
-	"plugins": ["drizzle"],
 	"ignorePatterns": [
 		"node_modules/",
 		".next/",
