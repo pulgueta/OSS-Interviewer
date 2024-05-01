@@ -15,9 +15,6 @@ const nextConfig = {
 			fullUrl: true,
 		},
 	},
-	experimental: {
-		serverComponentsExternalPackages: ['argon2', 'pg'],
-	},
 	webpack: (config, { isServer, webpack }) => {
 		config.plugins.push(
 			new webpack.NormalModuleReplacementPlugin(/^node:/, (resource) => {
