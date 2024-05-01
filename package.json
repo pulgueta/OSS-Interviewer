@@ -64,7 +64,6 @@
     "eslint": "8.57.0",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",
-    "eslint-plugin-drizzle": "^0.2.3",
     "eslint-plugin-prettier": "latest",
     "eslint-plugin-tailwindcss": "latest",
     "husky": "latest",
