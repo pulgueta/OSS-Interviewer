@@ -13,8 +13,14 @@ const Home = () => {
 	return (
 		<>
 			<main className='container relative flex size-full min-h-svh flex-col items-center justify-center overflow-x-hidden p-2 md:p-4'>
-				<div className='absolute -top-28 -z-10 size-72 animate-pulse bg-color/20 blur-3xl md:size-96' />
-				<div className='absolute -left-96 bottom-0 -z-10 size-72 animate-pulse bg-rose-400/10 blur-3xl md:size-72' />
+				<div
+					className='absolute -top-28 -z-10 size-72 animate-pulse bg-color/20 blur-3xl md:size-96'
+					aria-hidden
+				/>
+				<div
+					className='absolute -left-96 bottom-0 -z-10 size-72 animate-pulse bg-rose-400/10 blur-3xl md:size-72'
+					aria-hidden
+				/>
 
 				<h1 className='mb-4 animate-fade-down text-balance text-center text-4xl font-extrabold leading-9 tracking-tighter animate-duration-[1500ms] animate-ease-in-out md:text-5xl lg:text-6xl'>
 					{translations.landing.hero.title}
