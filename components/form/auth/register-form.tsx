@@ -54,6 +54,7 @@ export const RegisterForm = () => {
 	return (
 		<Form {...form}>
 			<form
+				style={{ viewTransitionName: 'auth' }}
 				onSubmit={onSubmit}
 				className='w-full space-y-6 rounded-xl border bg-background p-4 md:max-w-xl'
 			>
@@ -223,7 +224,7 @@ export const RegisterForm = () => {
 						)}
 					</Button>
 					<Link
-						style={{ viewTransitionName: 'login' }}
+						style={{ viewTransitionName: 'auth' }}
 						href='/login'
 						className={buttonVariants({
 							variant: 'link',
