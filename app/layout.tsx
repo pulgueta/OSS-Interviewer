@@ -73,7 +73,7 @@ export const metadata: Metadata = {
 	},
 	metadataBase: new URL('https://oss-interviewer.vercel.app/'),
 	icons: {
-		icon: '/icon.ico',
+		icon: '/favicon.ico',
 		shortcut: '/icon-192x192.png',
 		apple: '/icon-192x192.png',
 	},
