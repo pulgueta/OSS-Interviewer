@@ -8,8 +8,6 @@ import { GeistMono } from 'geist/font/mono';
 import { ViewTransitions } from 'next-view-transitions';
 
 import { ClientProviders } from '@/providers';
-import { Navbar } from '@/components/navbar/navbar';
-import { Footer } from '@/components/footer/footer';
 import { Toaster } from '@/components/ui/sonner';
 import { default as translations } from '@/i18n/en.json';
 
@@ -111,10 +109,8 @@ const RootLayout = ({ children }: PropsWithChildren) => {
 				<body>
 					{process.env.NODE_ENV === 'production' && <Analytics />}
 					<ClientProviders>
-						<Navbar />
 						<Toaster richColors position='top-right' />
 						{children}
-						<Footer />
 					</ClientProviders>
 				</body>
 			</html>
