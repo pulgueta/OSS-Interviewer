@@ -23,12 +23,12 @@ export const ClientNavigationMenu = () => {
 			<NavigationMenuList>
 				<NavigationMenuItem>
 					<NavigationMenuTrigger className='text-base'>
-						{translations.navbar.links.pricing.label}
+						{translations.navbar.clientLinks.label}
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul className='grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
 							<ListItem
-								href={`${translations.navbar.links.pricing.href}?pr=personal`}
+								href={`${translations.navbar.clientLinks.href}?pr=personal`}
 								title='Personal'
 							>
 								{
@@ -37,7 +37,7 @@ export const ClientNavigationMenu = () => {
 								}
 							</ListItem>
 							<ListItem
-								href={`${translations.navbar.links.pricing.href}?pr=enterprise`}
+								href={`${translations.navbar.clientLinks.href}?pr=enterprise`}
 								title='Enterprise'
 							>
 								{

@@ -1,9 +1,9 @@
 'use client';
 
-import { Link } from 'next-view-transitions';
+import Link from 'next/link';
 
-import { ThemeSwitcher } from '../theme-switcher';
-import { buttonVariants } from '../ui/button';
+import { ThemeSwitcher } from '../../theme-switcher';
+import { buttonVariants } from '../../ui/button';
 import { MobileMenu } from './mobile-menu';
 import { ClientNavigationMenu } from './client-navigation-menu';
 import { default as translations } from '@/i18n/en.json';
@@ -20,34 +20,28 @@ export const Navbar = () => {
 					<li>
 						<ClientNavigationMenu />
 					</li>
-					<li>
-						<Link
-							style={{ viewTransitionName: 'about' }}
-							href={translations.navbar.links.about.href}
-							className='font-medium'
-						>
-							{translations.navbar.links.about.label}
-						</Link>
-					</li>
-					<li>
-						<Link
-							style={{ viewTransitionName: 'faq' }}
-							href={translations.navbar.links.faq.href}
-							className='font-medium'
-						>
-							{translations.navbar.links.faq.label}
-						</Link>
-					</li>
+					{translations.navbar.links.map((link) => (
+						<li key={link.href}>
+							<Link
+								href={link.href}
+								className='font-medium'
+								prefetch={false}
+							>
+								{link.label}
+							</Link>
+						</li>
+					))}
 				</ul>
 
 				<Link
-					href={translations.navbar.links.get_started.href}
+					href={translations.navbar.get_started.href}
+					prefetch={false}
 					className={buttonVariants({
 						variant: 'color',
 						className: 'hidden md:block',
 					})}
 				>
-					{translations.navbar.links.get_started.label}
+					{translations.navbar.get_started.label}
 				</Link>
 
 				<MobileMenu />
