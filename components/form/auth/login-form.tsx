@@ -1,5 +1,7 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import { Link } from 'next-view-transitions';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -20,6 +22,8 @@ import { type Login, loginSchema } from '@/schemas/loginSchema';
 import { default as translations } from '@/i18n/en.json';
 
 export const LoginForm = () => {
+	const { push } = useRouter();
+
 	const {
 		login: { form: translationsForm, schema },
 	} = translations;
@@ -42,15 +46,20 @@ export const LoginForm = () => {
 
 		if (!query.ok) {
 			return toast.error('Error', { description: res.message });
+		} else {
+			toast.success('Success', { description: res.message });
 		}
 
-		return toast.success('Success', { description: res.message });
+		form.clearErrors();
+		form.reset();
+
+		return push('/dashboard');
 	});
 
 	return (
 		<Form {...form}>
 			<form
-				style={{ viewTransitionName: 'auth' }}
+				style={{ viewTransitionName: 'login-form' }}
 				onSubmit={onSubmit}
 				className='w-full space-y-6 rounded-xl border bg-background p-4 shadow md:max-w-lg'
 			>
@@ -124,7 +133,7 @@ export const LoginForm = () => {
 						)}
 					</Button>
 					<Link
-						style={{ viewTransitionName: 'auth' }}
+						style={{ viewTransitionName: 'register-form' }}
 						href='/register'
 						className={buttonVariants({
 							variant: 'link',
