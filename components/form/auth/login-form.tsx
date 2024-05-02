@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import { useRouter } from 'next/navigation';
 
 import { Link } from 'next-view-transitions';
@@ -18,10 +20,14 @@ import {
 	FormLabel,
 	FormMessage,
 } from '@/components/ui/form';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
 import { type Login, loginSchema } from '@/schemas/loginSchema';
 import { default as translations } from '@/i18n/en.json';
 
 export const LoginForm = () => {
+	const [showPassword, setShowPassword] = useState<boolean>(false);
+
 	const { push } = useRouter();
 
 	const {
@@ -104,16 +110,36 @@ export const LoginForm = () => {
 									{translationsForm.labels.password.label}
 								</FormLabel>
 								<FormControl>
-									<Input
-										type='password'
-										placeholder={
-											translationsForm.labels.password
-												.placeholder
-										}
-										autoComplete='password'
-										max={schema.password.maxLength}
-										{...field}
-									/>
+									<>
+										<Input
+											type={
+												showPassword
+													? 'text'
+													: 'password'
+											}
+											placeholder={
+												translationsForm.labels.password
+													.placeholder
+											}
+											autoComplete='password'
+											max={schema.password.maxLength}
+											{...field}
+										/>
+										<div className='flex items-center gap-x-2 pt-2'>
+											<Checkbox
+												id='showPassword'
+												checked={showPassword}
+												onCheckedChange={() =>
+													setShowPassword(
+														(prev) => !prev,
+													)
+												}
+											/>
+											<Label htmlFor='showPassword'>
+												Show password
+											</Label>
+										</div>
+									</>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
