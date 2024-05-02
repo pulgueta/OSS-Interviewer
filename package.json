@@ -38,7 +38,7 @@
 		"class-variance-authority": "latest",
 		"clsx": "latest",
 		"cmdk": "latest",
-		"drizzle-orm": "^0.30.9",
+		"drizzle-orm": "^0.30.10",
 		"geist": "latest",
 		"jiti": "^1.21.0",
 		"lucide-react": "latest",
@@ -53,14 +53,14 @@
 		"sonner": "^1.4.41",
 		"tailwind-merge": "latest",
 		"tailwindcss-animate": "^1.0.7",
-		"zod": "^3.23.4"
+		"zod": "^3.23.5"
 	},
 	"devDependencies": {
 		"@commitlint/config-conventional": "latest",
 		"@commitlint/format": "latest",
 		"@types/node": "latest",
 		"@types/pg": "^8.11.5",
-		"@types/react": "18.3",
+		"@types/react": "18.3.1",
 		"@types/react-dom": "18.3",
 		"@typescript-eslint/parser": "latest",
 		"drizzle-kit": "^0.20.17",
