@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+import NextAuth, { type DefaultSession } from 'next-auth';
 import { DrizzleAdapter } from '@auth/drizzle-adapter';
 
 import { db } from '@/db';
@@ -7,23 +7,21 @@ import { getUserById } from '@/lib/db/users';
 import authConfig from './auth.config';
 import { env } from './env.server';
 
-export interface CustomUser {
+export type CustomUser = DefaultSession['user'] & {
 	id: UserSelect['id'];
 	username: UserSelect['username'];
 	firstName: UserSelect['firstName'];
 	lastName: UserSelect['lastName'];
 	email: UserSelect['email'];
-	emailVerified: UserSelect['emailVerified'];
 	role: UserSelect['role'];
-	plan: UserSelect['plan'];
 	photoURL: UserSelect['photoURL'];
-	createdAt: UserSelect['createdAt'];
-	updatedAt: UserSelect['updatedAt'];
-}
+};
 
 declare module 'next-auth' {
 	// eslint-disable-next-line no-unused-vars
-	interface Session extends CustomUser {}
+	interface Session {
+		user: CustomUser;
+	}
 }
 
 export const {
@@ -57,18 +55,28 @@ export const {
 			token.firstName = currentUser.firstName;
 			token.lastName = currentUser.lastName;
 			token.email = currentUser.email;
-			token.emailVerified = currentUser.emailVerified;
 			token.role = currentUser.role;
-			token.plan = currentUser.plan;
 			token.photoURL = currentUser.photoURL;
-			token.createdAt = currentUser.createdAt;
-			token.updatedAt = currentUser.updatedAt;
 
 			return token;
 		},
 		session: async ({ session, token }) => {
 			if (token.sub && session.user) {
 				session.user.id = token.sub;
+			}
+
+			if (session.user) {
+				session.user.id = token.id as UserSelect['id'];
+				session.user.username =
+					token.username as UserSelect['username'];
+				session.user.firstName =
+					token.firstName as UserSelect['firstName'];
+				session.user.lastName =
+					token.lastName as UserSelect['lastName'];
+				session.user.email = token.email as UserSelect['email'];
+				session.user.role = token.role as UserSelect['role'];
+				session.user.photoURL =
+					token.photoURL as UserSelect['photoURL'];
 			}
 
 			return session;
