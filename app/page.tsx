@@ -30,7 +30,6 @@ const Home = () => {
 				</h2>
 				<section className='flex w-full animate-fade flex-col items-center justify-center gap-4 animate-delay-1000 animate-duration-[1300] md:flex-row'>
 					<Link
-						style={{ viewTransitionName: 'register' }}
 						href='/register'
 						prefetch={false}
 						className={buttonVariants({
@@ -108,7 +107,6 @@ const Home = () => {
 					</div>
 					<div className='grid max-w-sm gap-2 min-[400px]:grid-flow-col'>
 						<Link
-							style={{ viewTransitionName: 'register' }}
 							className={buttonVariants({ variant: 'color' })}
 							href='/register'
 						>

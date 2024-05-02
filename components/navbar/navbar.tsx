@@ -41,7 +41,6 @@ export const Navbar = () => {
 				</ul>
 
 				<Link
-					style={{ viewTransitionName: 'register' }}
 					href={translations.navbar.links.get_started.href}
 					className={buttonVariants({
 						variant: 'color',
