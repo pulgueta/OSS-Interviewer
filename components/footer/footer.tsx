@@ -24,24 +24,16 @@ export const Footer = () => {
 
 			<div className='flex flex-col items-center gap-4'>
 				<div className='flex items-center gap-x-4'>
-					<Link
-						href={translations.navbar.links.pricing.href}
-						className='text-sm font-medium tracking-tight md:text-base'
-					>
-						{translations.navbar.links.pricing.label}
-					</Link>
-					<Link
-						href={translations.navbar.links.about.href}
-						className='text-sm font-medium tracking-tight md:text-base'
-					>
-						{translations.navbar.links.about.label}
-					</Link>
-					<Link
-						href={translations.navbar.links.faq.href}
-						className='text-sm font-medium tracking-tight md:text-base'
-					>
-						{translations.navbar.links.faq.label}
-					</Link>
+					{translations.navbar.links.map((link) => (
+						<Link
+							href={link.href}
+							className='text-sm font-medium tracking-tight md:text-base'
+							key={link.href}
+							prefetch={false}
+						>
+							{link.label}
+						</Link>
+					))}
 				</div>
 			</div>
 

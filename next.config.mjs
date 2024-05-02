@@ -28,6 +28,30 @@ const nextConfig = {
 			};
 		}
 
+		config.module.rules.push({
+			test: /\.wasm$/,
+			loader: 'base64-loader',
+			type: 'javascript/auto',
+		});
+
+		config.module.noParse = /\.wasm$/;
+
+		config.module.rules.forEach((rule) => {
+			(rule.oneOf || []).forEach((oneOf) => {
+				if (oneOf.loader && oneOf.loader.indexOf('file-loader') >= 0) {
+					oneOf.exclude.push(/\.wasm$/);
+				}
+			});
+		});
+
+		if (!isServer) {
+			config.resolve.fallback.fs = false;
+		}
+
+		config.plugins.push(
+			new webpack.IgnorePlugin({ resourceRegExp: /\/__tests__\// }),
+		);
+
 		return config;
 	},
 };

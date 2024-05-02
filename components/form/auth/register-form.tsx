@@ -1,5 +1,7 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import { Link } from 'next-view-transitions';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -20,6 +22,8 @@ import { registerSchema, type Register } from '@/schemas/registerSchema';
 import { default as translations } from '@/i18n/en.json';
 
 export const RegisterForm = () => {
+	const { push } = useRouter();
+
 	const {
 		register: { form: translationsForm, schema },
 	} = translations;
@@ -46,15 +50,20 @@ export const RegisterForm = () => {
 
 		if (!query.ok) {
 			return toast.error('Error', { description: res.message });
+		} else {
+			toast.success('Success', { description: res.message });
 		}
 
-		return toast.success('Success', { description: res.message });
+		form.reset();
+		form.clearErrors();
+
+		return push('/login');
 	});
 
 	return (
 		<Form {...form}>
 			<form
-				style={{ viewTransitionName: 'auth' }}
+				style={{ viewTransitionName: 'register-form' }}
 				onSubmit={onSubmit}
 				className='w-full space-y-6 rounded-xl border bg-background p-4 md:max-w-xl'
 			>
@@ -224,7 +233,7 @@ export const RegisterForm = () => {
 						)}
 					</Button>
 					<Link
-						style={{ viewTransitionName: 'auth' }}
+						style={{ viewTransitionName: 'login-form' }}
 						href='/login'
 						className={buttonVariants({
 							variant: 'link',

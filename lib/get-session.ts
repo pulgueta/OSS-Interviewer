@@ -6,7 +6,7 @@ export const currentUser = cache(async () => {
 	const session = await auth();
 
 	if (!session?.user) {
-		return false;
+		return;
 	}
 
 	return session.user;

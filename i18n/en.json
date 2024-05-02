@@ -1,4 +1,9 @@
 {
+	"_404": {
+		"title": "Oops! Page not found :(",
+		"description": "The page you are looking for doesn't exist or has been moved.",
+		"link": "Go back home"
+	},
 	"api": {
 		"_429": "Too many requests!",
 		"_400": "Invalid input data"
@@ -27,23 +32,41 @@
 	"navbar": {
 		"title": "AInterviewer",
 		"buttonLabel": "Open menu",
-		"links": {
-			"pricing": {
+		"logout": "Logout",
+		"loggingOut": "Logging out...",
+		"links": [
+			{
 				"label": "Pricing",
 				"href": "/pricing"
 			},
-			"about": {
+			{
 				"label": "About",
 				"href": "/about"
 			},
-			"faq": {
+			{
 				"label": "FAQ",
 				"href": "/faq"
-			},
-			"get_started": {
-				"label": "Get started",
-				"href": "/register"
 			}
+		],
+		"get_started": {
+			"label": "Get started",
+			"href": "/register"
+		},
+		"clientLinks": {
+			"label": "Pricing",
+			"href": "/pricing"
+		},
+		"user": {
+			"links": [
+				{
+					"label": "Settings",
+					"href": "/dashboard/settings"
+				},
+				{
+					"label": "Plan",
+					"href": "/dashboard/plan"
+				}
+			]
 		},
 		"pricing": {
 			"personal": {
@@ -212,7 +235,7 @@
 			}
 		},
 		"api": {
-			"_200": "Welcome back",
+			"_200": "Welcome back!",
 			"_400": "Invalid input data",
 			"_404": "User doesn't exist",
 			"_401": {
@@ -221,6 +244,11 @@
 				"accessDenied": "Access denied"
 			},
 			"_500": "An error ocurred. Please, try again."
+		}
+	},
+	"dashboard": {
+		"navbar": {
+			"title": "Dashboard"
 		}
 	}
 }

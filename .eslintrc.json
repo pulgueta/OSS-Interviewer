@@ -16,6 +16,9 @@
 		"no-unused-expressions": "error",
 		"no-unused-labels": "error"
 	},
+	"parserOptions": {
+		"ecmaVersion": 2018
+	},
 	"ignorePatterns": [
 		"node_modules/",
 		".next/",
