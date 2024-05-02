@@ -5,3 +5,8 @@ pnpm-lock.yaml
 .vscode
 .swc
 .vercel
+.cache
+bun.lockb
+public
+next-env.d.ts
+next.config.mjs
