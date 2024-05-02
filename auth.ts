@@ -22,6 +22,7 @@ export interface CustomUser {
 }
 
 declare module 'next-auth' {
+	// eslint-disable-next-line no-unused-vars
 	interface Session extends CustomUser {}
 }
 
