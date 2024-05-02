@@ -1,7 +1,7 @@
 {
-    "workbench.editor.customLabels.patterns": {
-        "**/app/**/page.tsx": "${dirname(1)}/${dirname} - Page",
-        "**/app/**/layout.tsx": "${dirname(1)}/${dirname} - Layout",
-        "**/app/api/**/route.{tsx,ts}": "${dirname(1)}/${dirname} - Route handler"
-    }
+	"workbench.editor.customLabels.patterns": {
+		"**/app/**/page.tsx": "${dirname(1)}/${dirname} - Page",
+		"**/app/**/layout.tsx": "${dirname(1)}/${dirname} - Layout",
+		"**/app/api/**/route.{tsx,ts}": "${dirname(1)}/${dirname} - Route handler"
+	}
 }
