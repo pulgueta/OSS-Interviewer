@@ -4,15 +4,16 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "next dev",
-		"build": "bun db:push && bun prettier && next build",
+		"dev": "bun db:migrate && bun db:push && next dev",
+		"build": "bun db:migrate && bun db:push && bun prettier && next build",
 		"start": "next start",
 		"lint": "next lint",
 		"prepare": "husky",
 		"commitlint": "commitlint --edit",
 		"prettier": "eslint --fix && prettier --check . --write",
 		"db:studio": "bunx drizzle-kit studio",
-		"db:push": "bunx drizzle-kit push:pg"
+		"db:push": "bunx drizzle-kit push:pg",
+		"db:migrate": "bunx drizzle-kit generate:pg"
 	},
 	"dependencies": {
 		"@auth/drizzle-adapter": "^1.0.1",
