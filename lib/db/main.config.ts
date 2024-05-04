@@ -47,7 +47,7 @@ export class DatabaseService {
 		return query as T;
 	}
 
-	async updateById<const T>(
+	async updateById<const T extends {}>(
 		table: AnyPgTable,
 		tableId: AnyPgColumn,
 		id: string,
