@@ -2,6 +2,7 @@ import { dbService } from '../main.config';
 import {
 	type AccountsInsert,
 	type AccountsSelect,
+	type UserSelect,
 	accounts,
 } from '@/db/schema';
 
@@ -38,13 +39,23 @@ export const updateAccountById = async (
 	return account;
 };
 
-export const getAllaccountss = async () => {
+export const getAllAccounts = async () => {
 	const query = await dbService.getAllData<AccountsSelect[]>(accounts);
 
 	return query;
 };
 
-export const getaccountsById = async (id: AccountsSelect['id']) => {
+export const getAccountsByUserId = async (id: UserSelect['id']) => {
+	const query = await dbService.getBy<AccountsSelect[]>(
+		accounts.profileId,
+		accounts,
+		id,
+	);
+
+	return query;
+};
+
+export const getAccountsById = async (id: AccountsSelect['id']) => {
 	const query = await dbService.getBy<AccountsSelect>(
 		accounts.id,
 		accounts,
