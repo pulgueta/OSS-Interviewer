@@ -17,10 +17,7 @@ export class DatabaseService {
 		table: AnyPgTable,
 		payload: string,
 	) {
-		const [query] = await db
-			.select()
-			.from(table)
-			.where(eq(column, payload));
+		const query = await db.select().from(table).where(eq(column, payload));
 
 		return query as T;
 	}
