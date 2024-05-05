@@ -7,6 +7,7 @@ import {
 	boolean,
 	integer,
 	json,
+	jsonb,
 	pgEnum,
 	pgTable,
 	text,
@@ -48,14 +49,21 @@ export const users = pgTable('users', {
 	plan: planEnum('plan').default('free'),
 	emailVerified: boolean('emailVerified').default(false),
 	photoURL: varchar('photo_url'),
+	accounts: jsonb('accounts').array().$type<
+		{
+			id: string;
+			accountType: 'personal' | 'enterprise';
+			profileId: string;
+		}[]
+	>(),
 	createdAt: timestamp('created_at').defaultNow(),
 	updatedAt: timestamp('updated_at')
 		.$onUpdate(() => new Date())
 		.defaultNow(),
 });
 
-export const userRelations = relations(users, ({ one }) => ({
-	account: one(accounts),
+export const userRelations = relations(users, ({ many }) => ({
+	account: many(accounts),
 }));
 
 export type UserSelect = InferSelectModel<typeof users>;
@@ -72,7 +80,7 @@ export const accounts = pgTable('accounts', {
 	}),
 	accountType: accountTypeEnum('account_type').default('personal'),
 	credits: integer('credits').default(3),
-	teams: json('teams').array(),
+	teams: jsonb('teams').array().$type<Teams[]>(),
 	createdAt: timestamp('created_at').defaultNow(),
 	updatedAt: timestamp('updated_at')
 		.$onUpdate(() => new Date())
@@ -85,6 +93,8 @@ export const accountsRelations = relations(accounts, ({ many }) => ({
 
 export type AccountsSelect = InferSelectModel<typeof accounts>;
 export type AccountsInsert = InferInsertModel<typeof accounts>;
+
+interface Teams extends TeamsSelect {}
 
 // Teams table
 
@@ -108,6 +118,8 @@ export const teamsRelation = relations(teams, ({ one }) => ({
 
 export type TeamsSelect = InferSelectModel<typeof teams>;
 export type TeamsInsert = InferInsertModel<typeof teams>;
+
+// Verification token table
 
 export const verificationToken = pgTable('verification_token', {
 	id: text('id')
