@@ -48,7 +48,10 @@ export const AccountsTable: FC<AccountsData> = ({ accounts }) => {
 								size='icon'
 								disabled={accounts.length <= 1}
 							>
-								<Trash2Icon className='size-4' />
+								<Trash2Icon
+									aria-label='Delete account'
+									className='size-4'
+								/>
 							</Button>
 						</TableCell>
 					</TableRow>
