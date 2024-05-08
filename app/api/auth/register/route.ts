@@ -40,7 +40,11 @@ export const POST = async (req: NextRequest) => {
 
 	const userExists = await getUserByEmail(body.data.email);
 
-	if (userExists) {
+	if (body.data.username === userExists.username) {
+		return Response.json({ message: _400.userTaken }, { status: 400 });
+	}
+
+	if (body.data.email === userExists.email) {
 		return Response.json({ message: _400.emailTaken }, { status: 400 });
 	}
 
