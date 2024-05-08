@@ -1,10 +1,12 @@
+import Link from 'next/link';
+
 import { PlusIcon } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
-
-import { currentUser } from '@/lib/get-session';
-import { getUserById } from '@/lib/db/users';
 import { AccountsTable } from './components/accounts-table';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { Illustration } from '@/components/svg/illustration';
+import { currentUser } from '@/lib/get-session';
+import { getUserByEmail } from '@/lib/db/users';
 import { getAccountsById } from '@/lib/db/accounts';
 
 const Dashboard = async () => {
@@ -12,7 +14,7 @@ const Dashboard = async () => {
 
 	if (!user) return;
 
-	const { accounts } = await getUserById(user.id);
+	const { accounts } = await getUserByEmail(user.email);
 
 	if (!accounts) return;
 
@@ -37,11 +39,34 @@ const Dashboard = async () => {
 					Welcome back, {user.firstName}
 				</h1>
 			</header>
-			<section className='my-4 grid w-full grid-cols-1 place-items-start gap-4 md:container md:grid-cols-2 lg:grid-cols-3'>
-				<article className='w-full rounded-xl border p-4'>
-					<h4 className='mb-4 text-2xl font-bold md:text-3xl'>
-						Tus cuentas
-					</h4>
+			<section className='container my-4 flex w-full flex-col justify-between gap-8 border-b pb-4 md:flex-row md:items-start'>
+				<div>
+					<h2 className='text-balance text-xl font-semibold tracking-tight md:text-2xl'>
+						Ready to practice?
+					</h2>
+					<p className='my-2 max-w-prose text-pretty text-muted-foreground'>
+						Do not lose your streak and practice
+					</p>
+					<Link
+						href=''
+						className={buttonVariants({
+							variant: 'color',
+							className: 'w-full md:w-auto',
+						})}
+					>
+						Continue training
+					</Link>
+				</div>
+
+				{/* Illustration used from https://undraw.co/illustrations */}
+
+				<Illustration className='h-max w-full md:max-w-md' />
+			</section>
+			<section className='grid w-full grid-cols-1 place-items-start gap-4 md:container md:grid-cols-2 lg:grid-cols-3'>
+				<article className='w-full rounded-xl border p-6'>
+					<h3 className='mb-4 text-2xl font-bold md:text-3xl'>
+						Your accounts
+					</h3>
 
 					<AccountsTable accounts={accounts} />
 
@@ -54,22 +79,22 @@ const Dashboard = async () => {
 					)}
 				</article>
 
-				<article className='w-full rounded-xl border p-4'>
-					<h4 className='text-2xl font-bold md:text-3xl'>
-						Tus créditos: {account.credits}
-					</h4>
+				<article className='w-full rounded-xl border p-6'>
+					<h3 className='text-balance text-2xl font-bold tracking-tight md:text-3xl'>
+						Your credits: {account.credits}
+					</h3>
 				</article>
 
-				<article className='w-full rounded-xl border p-4'>
-					<h4 className='text-2xl font-bold md:text-3xl'>
-						Tus CV actual
-					</h4>
+				<article className='w-full rounded-xl border p-6'>
+					<h3 className='text-2xl font-bold md:text-3xl'>
+						Your current CV
+					</h3>
 					<p className='my-2 text-sm text-muted-foreground'>
-						nombre_de_tu_cv.pdf
+						cv_name.pdf
 					</p>
 					<div className='mb-2 h-28 w-full rounded-lg bg-neutral-600' />
 					<Button variant='outline' className='w-full'>
-						<PlusIcon />
+						<PlusIcon aria-label='Upload CV' />
 					</Button>
 				</article>
 			</section>
