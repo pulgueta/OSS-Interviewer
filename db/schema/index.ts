@@ -40,7 +40,7 @@ export const users = pgTable('users', {
 	id: text('id')
 		.primaryKey()
 		.$defaultFn(() => createId('user')),
-	username: varchar('username', { length: 32 }).notNull(),
+	username: varchar('username', { length: 32 }).notNull().unique(),
 	firstName: varchar('first_name', { length: 64 }).notNull(),
 	lastName: varchar('last_name', { length: 64 }).notNull(),
 	email: varchar('email', { length: 128 }).unique().notNull(),
