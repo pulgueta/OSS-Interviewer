@@ -1,10 +1,10 @@
-import Link from 'next/link';
-
+import { Link } from 'next-view-transitions';
 import { PlusIcon } from 'lucide-react';
 
 import { AccountsTable } from './components/accounts-table';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Illustration } from '@/components/svg/illustration';
+import { Separator } from '@/components/ui/separator';
 import { currentUser } from '@/lib/get-session';
 import { getUserByEmail } from '@/lib/db/users';
 import { getAccountsById } from '@/lib/db/accounts';
@@ -35,22 +35,36 @@ const Dashboard = async () => {
 	return (
 		<main className='flex min-h-[92.3dvh] flex-col items-start justify-start p-4'>
 			<header className='container rounded border-b pb-4'>
-				<h1 className='text-balance text-2xl font-bold tracking-tighter md:text-4xl'>
+				<h1
+					style={{ viewTransitionName: 'dashboard-title' }}
+					className='text-balance text-3xl font-bold tracking-tighter md:text-4xl'
+				>
 					Welcome back, {user.firstName}
 				</h1>
 			</header>
 			<section className='container my-4 flex w-full flex-col justify-between gap-8 border-b pb-4 md:flex-row md:items-start'>
 				<div>
-					<h2 className='text-balance text-xl font-semibold tracking-tight md:text-2xl'>
+					<h2 className='text-balance text-2xl font-semibold tracking-tight md:text-3xl'>
 						Ready to practice?
 					</h2>
 					<p className='my-2 max-w-prose text-pretty text-muted-foreground'>
 						Do not lose your streak and practice
 					</p>
 					<Link
-						href=''
+						href='/dashboard/create'
+						style={{ viewTransitionName: 'create-interview' }}
 						className={buttonVariants({
 							variant: 'color',
+							className: 'w-full md:w-auto',
+						})}
+					>
+						Create new training
+					</Link>
+					<Separator className='my-4' />
+					<Link
+						href=''
+						className={buttonVariants({
+							variant: 'outline',
 							className: 'w-full md:w-auto',
 						})}
 					>
