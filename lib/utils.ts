@@ -19,6 +19,7 @@ export const prefixes = {
 	teams: 'teams',
 	account: 'account',
 	token: 'token',
+	interview: 'interview',
 } as const;
 
 export const createId = (prefix: keyof typeof prefixes): string =>
