@@ -67,7 +67,7 @@ export const LoginForm = () => {
 			<form
 				style={{ viewTransitionName: 'login-form' }}
 				onSubmit={onSubmit}
-				className='w-full space-y-6 rounded-xl border bg-background p-4 shadow md:max-w-lg'
+				className='w-full space-y-6 rounded-xl border bg-background p-6 shadow md:max-w-lg'
 			>
 				<header>
 					<h2 className='text-2xl font-bold tracking-tighter lg:text-3xl lg:font-extrabold'>
