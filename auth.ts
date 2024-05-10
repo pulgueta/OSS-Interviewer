@@ -3,7 +3,7 @@ import { DrizzleAdapter } from '@auth/drizzle-adapter';
 
 import { db } from '@/db';
 import type { UserSelect } from '@/db/schema';
-import { getUserById } from '@/lib/db/users';
+import { getUserByEmail } from '@/lib/db/users';
 import authConfig from './auth.config';
 import { env } from './env.server';
 
@@ -18,8 +18,7 @@ export type CustomUser = DefaultSession['user'] & {
 };
 
 declare module 'next-auth' {
-	// eslint-disable-next-line no-unused-vars
-	interface Session {
+	export interface Session {
 		user: CustomUser;
 	}
 }
@@ -39,6 +38,7 @@ export const {
 	secret: env.AUTH_SECRET,
 	session: { strategy: 'jwt' },
 	useSecureCookies: process.env.NODE_ENV === 'production',
+	debug: process.env.NODE_ENV === 'development',
 	jwt: {
 		maxAge: 5 * 24 * 60 * 60,
 	},
@@ -46,7 +46,7 @@ export const {
 		jwt: async ({ token }) => {
 			if (!token.sub) return token;
 
-			const currentUser = await getUserById(token.sub);
+			const currentUser = await getUserByEmail(token.email!);
 
 			if (!currentUser) return token;
 
@@ -81,10 +81,20 @@ export const {
 
 			return session;
 		},
-		authorized: async ({ auth, request }) => {
-			const isLogged = !!auth?.user;
+		authorized: ({ auth, request }) => {
+			const isLogged = !!auth;
 			const isDashboardRoute =
 				request.nextUrl.pathname.startsWith('/dashboard');
+			const isAuthRoute =
+				request.nextUrl.pathname.startsWith('/login') ||
+				request.nextUrl.pathname.startsWith('/register') ||
+				request.nextUrl.pathname.startsWith('/reset-password');
+
+			if (isAuthRoute && isLogged) {
+				return Response.redirect(
+					request.url.replace(request.nextUrl.pathname, '/dashboard'),
+				);
+			}
 
 			if (isDashboardRoute) {
 				if (isLogged) return true;
