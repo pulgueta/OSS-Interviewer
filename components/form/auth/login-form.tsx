@@ -155,7 +155,7 @@ export const LoginForm = () => {
 						{form.formState.isSubmitting ? (
 							<LoaderCircleIcon className='animate-spin' />
 						) : (
-							'Submit'
+							translationsForm.button
 						)}
 					</Button>
 					<Link

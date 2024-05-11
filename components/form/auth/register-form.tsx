@@ -229,7 +229,7 @@ export const RegisterForm = () => {
 						{form.formState.isSubmitting ? (
 							<LoaderCircleIcon className='animate-spin' />
 						) : (
-							'Submit'
+							translationsForm.button
 						)}
 					</Button>
 					<Link
