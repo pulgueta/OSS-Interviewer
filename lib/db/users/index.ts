@@ -65,7 +65,7 @@ export const getAllUsers = async () => {
 };
 
 export const getUserById = async (id: UserSelect['id']) => {
-	const [user] = await dbService.getBy<UserSelect[]>(users.id, users, id);
+	const user = await dbService.getBy<UserSelect>(users.id, users, id);
 
 	return user;
 };
