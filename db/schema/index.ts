@@ -49,11 +49,18 @@ export const users = pgTable('users', {
 	plan: planEnum('plan').default('free'),
 	emailVerified: boolean('emailVerified').default(false),
 	photoURL: varchar('photo_url'),
+	cvURL: varchar('cv_url'),
 	accounts: jsonb('accounts').array().$type<
 		{
 			id: string;
 			accountType: 'personal' | 'enterprise';
 			profileId: string;
+		}[]
+	>(),
+	interviews: jsonb('interviews').array().$type<
+		{
+			id: string;
+			title: string;
 		}[]
 	>(),
 	createdAt: timestamp('created_at').defaultNow(),
@@ -62,12 +69,25 @@ export const users = pgTable('users', {
 		.defaultNow(),
 });
 
-export const userRelations = relations(users, ({ many }) => ({
-	account: many(accounts),
+export const usersRelations = relations(users, ({ one, many }) => ({
+	verificationToken: one(verificationToken, {
+		fields: [users.id],
+		references: [verificationToken.userId],
+		relationName: 'verificationToken',
+	}),
+	accounts: many(accounts, { relationName: 'accounts' }),
 }));
 
 export type UserSelect = InferSelectModel<typeof users>;
 export type UserInsert = InferInsertModel<typeof users>;
+
+// Interviews table
+
+export const interviews = pgTable('interviews', {
+	id: text('id')
+		.primaryKey()
+		.$defaultFn(() => createId('interview')),
+});
 
 // Accounts table
 
@@ -87,8 +107,13 @@ export const accounts = pgTable('accounts', {
 		.defaultNow(),
 });
 
-export const accountsRelations = relations(accounts, ({ many }) => ({
-	teams: many(teams),
+export const accountsRelations = relations(accounts, ({ one, many }) => ({
+	user: one(users, {
+		fields: [accounts.profileId],
+		references: [users.id],
+		relationName: 'accounts',
+	}),
+	teams: many(teams, { relationName: 'teams' }),
 }));
 
 export type AccountsSelect = InferSelectModel<typeof accounts>;
@@ -112,8 +137,12 @@ export const teams = pgTable('teams', {
 		.defaultNow(),
 });
 
-export const teamsRelation = relations(teams, ({ one }) => ({
-	account: one(accounts),
+export const teamsRelations = relations(teams, ({ one }) => ({
+	account: one(accounts, {
+		fields: [teams.accountId],
+		references: [accounts.id],
+		relationName: 'teams',
+	}),
 }));
 
 export type TeamsSelect = InferSelectModel<typeof teams>;
@@ -135,6 +164,17 @@ export const verificationToken = pgTable('verification_token', {
 		.$onUpdate(() => new Date())
 		.defaultNow(),
 });
+
+export const verificationTokenRelations = relations(
+	verificationToken,
+	({ one }) => ({
+		user: one(users, {
+			fields: [verificationToken.userId],
+			references: [users.id],
+			relationName: 'verificationToken',
+		}),
+	}),
+);
 
 export type TokenSelect = InferSelectModel<typeof verificationToken>;
 export type TokenInsert = InferInsertModel<typeof verificationToken>;
