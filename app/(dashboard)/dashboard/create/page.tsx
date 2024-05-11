@@ -1,11 +1,13 @@
 import { Link } from 'next-view-transitions';
 import { ChevronLeftIcon } from 'lucide-react';
 
-import { Button, buttonVariants } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
+import { buttonVariants } from '@/components/ui/button';
+import { CreateInterviewForm } from '@/components/form/user/create-interview';
+import { default as translations } from '@/i18n/en.json';
 
 const Create = () => {
+	const { create_interview } = translations;
+
 	return (
 		<div className='flex min-h-[92.3dvh] flex-col items-start justify-start p-4'>
 			<div className='mx-auto w-full max-w-5xl'>
@@ -18,24 +20,15 @@ const Create = () => {
 						className='mr-2 size-4'
 						aria-label='Go back'
 					/>
-					Go back
+					{create_interview.go_back}
 				</Link>
 				<h1
 					style={{ viewTransitionName: 'create-interview' }}
-					className='text-3xl font-bold tracking-tighter'
+					className='mb-4 text-3xl font-bold tracking-tighter'
 				>
-					Create a new interview
+					{create_interview.title}
 				</h1>
-				<form className='my-4 grid gap-4'>
-					<Label>Full name</Label>
-					<Input />
-					<Label>Role you are applying for</Label>
-					<Input />
-					<Label>Years of experience</Label>
-					<Input />
-
-					<Button>Create interview</Button>
-				</form>
+				<CreateInterviewForm />
 			</div>
 		</div>
 	);
