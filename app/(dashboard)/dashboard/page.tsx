@@ -1,5 +1,5 @@
 import { Link } from 'next-view-transitions';
-import { PlusIcon } from 'lucide-react';
+import { PlusIcon, SettingsIcon } from 'lucide-react';
 
 import { AccountsTable } from './components/accounts-table';
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -8,8 +8,11 @@ import { Separator } from '@/components/ui/separator';
 import { currentUser } from '@/lib/get-session';
 import { getUserByEmail } from '@/lib/db/users';
 import { getAccountsById } from '@/lib/db/accounts';
+import { default as translations } from '@/i18n/en.json';
 
 const Dashboard = async () => {
+	const { dashboard } = translations;
+
 	const user = await currentUser();
 
 	if (!user) return;
@@ -39,26 +42,25 @@ const Dashboard = async () => {
 					style={{ viewTransitionName: 'dashboard-title' }}
 					className='text-balance text-3xl font-bold tracking-tighter md:text-4xl'
 				>
-					Welcome back, {user.firstName}
+					{dashboard.welcome.replace('{{name}}', user.firstName)}
 				</h1>
 			</header>
 			<section className='container my-4 flex w-full flex-col justify-between gap-8 border-b pb-4 md:flex-row md:items-start'>
 				<div>
 					<h2 className='text-balance text-2xl font-semibold tracking-tight md:text-3xl'>
-						Ready to practice?
+						{dashboard.readyToPractice}
 					</h2>
 					<p className='my-2 max-w-prose text-pretty text-muted-foreground'>
-						Do not lose your streak and practice
+						{dashboard.streak}
 					</p>
 					<Link
 						href='/dashboard/create'
 						style={{ viewTransitionName: 'create-interview' }}
 						className={buttonVariants({
-							variant: 'color',
 							className: 'w-full md:w-auto',
 						})}
 					>
-						Create new training
+						{dashboard.create_interview}
 					</Link>
 					<Separator className='my-4' />
 					<Link
@@ -68,7 +70,7 @@ const Dashboard = async () => {
 							className: 'w-full md:w-auto',
 						})}
 					>
-						Continue training
+						{dashboard.continueTraining}
 					</Link>
 				</div>
 
@@ -79,34 +81,45 @@ const Dashboard = async () => {
 			<section className='grid w-full grid-cols-1 place-items-start gap-4 md:container md:grid-cols-2 lg:grid-cols-3'>
 				<article className='w-full rounded-xl border p-6'>
 					<h3 className='mb-4 text-2xl font-bold md:text-3xl'>
-						Your accounts
+						{dashboard.yourAccounts}
 					</h3>
 
 					<AccountsTable accounts={accounts} />
 
 					{accounts.length <= 2 && (
-						<footer className='mt-4 w-full border-t pt-4'>
-							<Button className='w-full'>
-								<PlusIcon className='mr-2 size-4' /> Add account
+						<footer className='mt-4 flex w-full gap-2 border-t pt-4'>
+							<Button className='w-full' variant='outline'>
+								<PlusIcon className='mr-2 size-4' />
+								{dashboard.addAccount}
 							</Button>
+							<Link
+								href='/dashboard/settings'
+								className={buttonVariants()}
+								style={{ viewTransitionName: 'settings-page' }}
+							>
+								<SettingsIcon className='mr-2 size-4' />
+								{dashboard.settings}
+							</Link>
 						</footer>
 					)}
 				</article>
 
 				<article className='w-full rounded-xl border p-6'>
 					<h3 className='text-balance text-2xl font-bold tracking-tight md:text-3xl'>
-						Your credits: {account.credits}
+						{dashboard.yourCredits.replace(
+							'{{credits}}',
+							account.credits,
+						)}
 					</h3>
 				</article>
 
 				<article className='w-full rounded-xl border p-6'>
 					<h3 className='text-2xl font-bold md:text-3xl'>
-						Your current CV
+						{dashboard.cv.title}
 					</h3>
-					<p className='my-2 text-sm text-muted-foreground'>
+					<p className='my-4 text-sm text-muted-foreground'>
 						cv_name.pdf
 					</p>
-					<div className='mb-2 h-28 w-full rounded-lg bg-neutral-600' />
 					<Button variant='outline' className='w-full'>
 						<PlusIcon aria-label='Upload CV' />
 					</Button>
