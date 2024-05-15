@@ -65,7 +65,7 @@ export const RegisterForm = () => {
 			<form
 				style={{ viewTransitionName: 'register-form' }}
 				onSubmit={onSubmit}
-				className='w-full space-y-6 rounded-xl border bg-background p-4 md:max-w-xl'
+				className='w-full space-y-6 rounded-xl border bg-background p-6 md:max-w-xl'
 			>
 				<header>
 					<h2 className='text-2xl font-bold tracking-tighter lg:text-3xl lg:font-extrabold'>
@@ -229,7 +229,7 @@ export const RegisterForm = () => {
 						{form.formState.isSubmitting ? (
 							<LoaderCircleIcon className='animate-spin' />
 						) : (
-							'Submit'
+							translationsForm.button
 						)}
 					</Button>
 					<Link

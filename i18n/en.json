@@ -192,6 +192,7 @@
 			"_400": {
 				"invalidInput": "Invalid input data",
 				"emailTaken": "Email is already taken",
+				"userTaken": "Username is already taken",
 				"tokenExpired": "Token is expired, please use a new one"
 			},
 			"_500": "Something happened and your account cannot be created. Please, try again.",
@@ -249,6 +250,88 @@
 	"dashboard": {
 		"navbar": {
 			"title": "Dashboard"
+		},
+		"createInterview": {
+			"form": {
+				"button": "Create interview",
+				"labels": {
+					"title": {
+						"label": "Interview title",
+						"placeholder": "Google LLC"
+					},
+					"jobTitle": {
+						"label": "Job title",
+						"placeholder": "Staff Engineer"
+					},
+					"yearsOfExperience": {
+						"label": "Years of experience",
+						"placeholder": "10"
+					},
+					"jobDescription": {
+						"label": "Job description",
+						"placeholder": "You will work across the team, helping to design user experiences and implement state-of-the-art applications. You will be part of a talented team working on products and experiments using modern development standards and industry best practices."
+					}
+				}
+			},
+			"schema": {
+				"title": {
+					"minLength": 4,
+					"maxLength": 32,
+					"minLengthError": "The interview title must be at least 4 characters long.",
+					"maxLengthError": "The interview title must not be longer than 32 characters.",
+					"invalidTypeError": "The interview title must be a string.",
+					"emptyError": "Please enter the interview title."
+				},
+				"jobTitle": {
+					"minLength": 4,
+					"maxLength": 64,
+					"minLengthError": "The job title must be at least 6 characters long.",
+					"maxLengthError": "The job title must not be longer than 64 characters.",
+					"invalidTypeError": "The job title must be a string.",
+					"emptyError": "Please enter the job title."
+				},
+				"yearsOfExperience": {
+					"minLength": 1,
+					"maxLength": 15,
+					"minLengthError": "The years of experience must be greater than 1.",
+					"maxLengthError": "The years of experience must not be greater than 15.",
+					"invalidTypeError": "The years of experience must be a number.",
+					"emptyError": "Please enter the years of experience."
+				},
+				"jobDescription": {
+					"minLength": 4,
+					"maxLength": 512,
+					"minLengthError": "The job description must be at least 4 characters long.",
+					"maxLengthError": "The job description must not be longer than 512 characters.",
+					"invalidTypeError": "The job description must be a string.",
+					"emptyError": "Please enter the job description."
+				}
+			}
+		},
+		"welcome": "Welcome back, {{name}}!",
+		"readyToPractice": "Ready to practice?",
+		"streak": "Don't lose your streak!",
+		"create_interview": "Create a new interview",
+		"continueTraining": "Continue training",
+		"yourAccounts": "Your accounts",
+		"addAccount": "Add account",
+		"settings": "Settings",
+		"yourCredits": "Your credits: {{credits}}",
+		"cv": {
+			"title": "Your current CV",
+			"upload": "Upload your CV",
+			"uploading": "Uploading...",
+			"uploaded": "Uploaded",
+			"uploadError": "Error uploading your CV",
+			"uploadingError": "Error uploading your CV. Please, try again."
 		}
+	},
+	"settings": {
+		"go_back": "Go back",
+		"title": "Settings"
+	},
+	"create_interview": {
+		"go_back": "Go back",
+		"title": "Create a new interview"
 	}
 }

@@ -15,6 +15,11 @@ const nextConfig = {
 			fullUrl: true,
 		},
 	},
+	experimental: {
+		staleTimes: {
+			dynamic: 0,
+		}
+	},
 	webpack: (config, { isServer, webpack }) => {
 		config.plugins.push(
 			new webpack.NormalModuleReplacementPlugin(/^node:/, (resource) => {

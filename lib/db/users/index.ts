@@ -1,5 +1,10 @@
 import { dbService } from '../main.config';
-import { type UserInsert, type UserSelect, users } from '@/db/schema';
+import {
+	type UserInsert,
+	type UserSelect,
+	type AccountsSelect,
+	users,
+} from '@/db/schema';
 import { encrypt } from '@/lib/utils';
 
 export const createUser = async ({ password, ...rest }: UserInsert) => {
@@ -7,6 +12,24 @@ export const createUser = async ({ password, ...rest }: UserInsert) => {
 		...rest,
 		password: await encrypt(password),
 	});
+
+	return user;
+};
+
+export const updateUserAccounts = async (
+	userId: string,
+	accountsData: Partial<{
+		id: string;
+		profileId: string;
+		accountType: AccountsSelect['accountType'];
+	}>,
+) => {
+	const user = await dbService.updateById<UserSelect>(
+		users,
+		users.id,
+		userId,
+		{ accounts: [accountsData] },
+	);
 
 	return user;
 };

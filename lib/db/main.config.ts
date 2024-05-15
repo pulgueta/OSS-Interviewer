@@ -9,7 +9,7 @@ export class DatabaseService {
 	async getAllData<const T>(table: AnyPgTable) {
 		const query = await db.select().from(table);
 
-		return query as T;
+		return query.length > 1 ? (query as T) : ([query] as T);
 	}
 
 	async getBy<const T>(
@@ -17,12 +17,9 @@ export class DatabaseService {
 		table: AnyPgTable,
 		payload: string,
 	) {
-		const [query] = await db
-			.select()
-			.from(table)
-			.where(eq(column, payload));
+		const query = await db.select().from(table).where(eq(column, payload));
 
-		return query as T;
+		return query.length > 1 ? (query as T) : ([query] as T);
 	}
 
 	async insertToDB<const T>(
@@ -47,7 +44,7 @@ export class DatabaseService {
 		return query as T;
 	}
 
-	async updateById<const T>(
+	async updateById<const T extends {}>(
 		table: AnyPgTable,
 		tableId: AnyPgColumn,
 		id: string,

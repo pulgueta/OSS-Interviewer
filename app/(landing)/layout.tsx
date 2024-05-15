@@ -2,15 +2,11 @@ import type { FC, PropsWithChildren } from 'react';
 
 import { Navbar } from '@/components/navbar/no-user/navbar';
 import { Footer } from '@/components/footer/footer';
-import { UserNavbar } from '@/components/navbar/user/user-navbar';
-import { currentUser } from '@/lib/get-session';
 
-const LandingLayout: FC<PropsWithChildren> = async ({ children }) => {
-	const user = await currentUser();
-
+const LandingLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<>
-			{user ? <UserNavbar {...user} /> : <Navbar />}
+			<Navbar />
 			{children}
 			<Footer />
 		</>

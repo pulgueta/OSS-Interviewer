@@ -1,7 +1,7 @@
 import type { NextRequest } from 'next/server';
 
 import { ratelimiter } from '@/lib/ratelimiter';
-import { createUser, getUserByEmail } from '@/lib/db/users';
+import { createUser, updateUserAccounts, getUserByEmail } from '@/lib/db/users';
 import { createAccount } from '@/lib/db/accounts';
 import { createToken } from '@/lib/db/verificationToken';
 import { registerSchema } from '@/schemas/registerSchema';
@@ -40,7 +40,11 @@ export const POST = async (req: NextRequest) => {
 
 	const userExists = await getUserByEmail(body.data.email);
 
-	if (userExists) {
+	if (body.data.username === userExists.username) {
+		return Response.json({ message: _400.userTaken }, { status: 400 });
+	}
+
+	if (body.data.email === userExists.email) {
 		return Response.json({ message: _400.emailTaken }, { status: 400 });
 	}
 
@@ -49,10 +53,17 @@ export const POST = async (req: NextRequest) => {
 
 	try {
 		// eslint-disable-next-line no-unused-vars
-		const { password, ...user } = await createUser({ ...rest });
-		const account = await createAccount({ profileId: user.id });
+		const { password, ...user } = await createUser({
+			...rest,
+		});
 
-		const data = { user, account };
+		const account = await createAccount({ profileId: user.id! });
+
+		await updateUserAccounts(user.id!, {
+			accountType: account.accountType,
+			id: account.id,
+			profileId: account.profileId!,
+		});
 
 		const expires = new Date(Date.now() + 30 * 60 * 1000);
 
@@ -70,8 +81,9 @@ export const POST = async (req: NextRequest) => {
 			return Response.json({ message: external }, { status: q.status });
 		}
 
-		return Response.json({ message: _201, data }, { status: 201 });
+		return Response.json({ message: _201 }, { status: 201 });
 	} catch (error) {
+		console.log(error);
 		if (error instanceof Error) {
 			return Response.json(
 				{
